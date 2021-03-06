@@ -1,17 +1,20 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./config/db");
+const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
 
 connectDB(); //Connect to Database
 
 //Initialize Middlewares
-app.use(express.json({extended:false})); //Using Express's bodyparser instead of app.use(bodyParser.json({extended:false}))
+app.use(express.json({ extended: false })); //Using Express's bodyparser instead of app.use(bodyParser.json({extended:false}))
 
-app.get("/", (req, res) => {
-  res.send("Backend Running");
-});
+app.use(cors()); // Use Cross Origin Resource Sharing to allow the front end to connect with this backend
+
+// app.get("/", (req, res) => {
+//   res.send("Backend Running");
+// });
 
 //Define Routes
 

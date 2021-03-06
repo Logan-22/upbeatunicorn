@@ -1,0 +1,459 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #fff;
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fca311;
+  z-index: 2;
+}
+.brand {
+  color: #14213d;
+  font-size: 25px;
+  letter-spacing: 10px;
+  font-family: "Bungee Shade", cursive;
+  transition: all 0.4s ease-in;
+}
+.brand:hover {
+  transform: scale(1.5);
+}
+.nav-list {
+  width: 40%;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+.nav-item {
+  padding: 0 2rem;
+  letter-spacing: 3px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  color: #14213d;
+  text-decoration: none;
+}
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #e5e5e5;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+.burger {
+  display: none;
+}
+
+/*To Remove Transitions in lower widths*/
+
+@media screen and (max-width: 1024px) {
+  .nav-list {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 768px) {
+  #root {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  * {
+    -webkit-transition: none;
+    transition: none;
+  }
+  .nav-bar {
+    position: relative;
+  }
+  .card {
+    z-index: 0;
+  }
+  .container {
+    z-index: 0;
+  }
+  .circle {
+    background: none;
+    width: 0px;
+    height: 0px;
+  }
+  .container {
+    padding: 0;
+    position: relative;
+    margin: 0rem;
+  }
+  .nav-list {
+    z-index: 1;
+    position: absolute;
+    right: 0px;
+    height: 120vh;
+    top: 10vh;
+    background-color: #fca311;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    min-height: 150vh;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+  .nav-item {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+    cursor: pointer;
+  }
+  .card {
+    transform-style: flat;
+  }
+  .threeDim {
+    perspective: none;
+    height: 700px;
+  }
+  .buttons button {
+    padding: 0 20px;
+    margin: 0 1rem;
+  }
+  .try button:hover,
+  .buttons button:hover {
+    transform: scale(1.1);
+  }
+}
+.nav-active {
+  transform: translateX(0);
+}
+@keyframes navLinkAnim {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transfrom: translate(0);
+  }
+}
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+/* ********************************3D Animation********************************* */
+.threeDim {
+  perspective: 1000px;
+  margin: 10vh 0 0 0;
+  min-height: 50vh;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  width: 70%;
+  height: 600px; /*Modify this value for changing Copy Right Footer*/
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  transform-style: preserve-3d;
+  background-color: #e5e5e5;
+  border-radius: 30px;
+  padding: 0 5rem;
+  min-height: 80vh;
+  width: 35rem;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+}
+.python {
+  min-height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.python img {
+  z-index: 2;
+  width: 12rem;
+  transition: all 0.75s ease-out;
+}
+.circle {
+  margin: 1rem 0 0 0;
+  width: 10rem;
+  height: 10rem;
+  background: linear-gradient(to right, #14213d, #fca311);
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+}
+.title {
+  margin: 2rem 0 0 0;
+  transition: all 0.75s ease-out;
+}
+.info h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #14213d;
+}
+.info h3 {
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 2rem 0;
+  color: #14213d;
+  font-weight: lighter;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.buttons button {
+  padding: 1rem 2rem;
+  background: none;
+  border: none;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  color: #14213d;
+  cursor: pointer;
+}
+button.active {
+  background: #14213d;
+  color: #fff;
+}
+.try {
+  margin-top: 2rem;
+}
+.try button {
+  width: 100%;
+  padding: 1rem 0rem;
+  margin: 0 0 1rem 0;
+  background: #fca311;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: bolder;
+}
+.try button,
+.buttons button {
+  font-size: 1rem;
+}
+
+/************************LOGIN PAGE*******************************/
+.login-page {
+  color: #14213d;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  min-height: 97vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5e5e5;
+}
+.login-parent {
+  min-height: 50vh;
+  min-width: 80vw;
+  border-radius: 5rem;
+  display: flex;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.1)
+  );
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.title {
+  margin: 0;
+  padding: 30px;
+}
+.login-cols1 {
+  border-radius: 5rem;
+  min-width: 50vw;
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+  border-right: solid #14213d;
+}
+.login-name {
+  margin-left: 10px;
+}
+.login-cols2 {
+  border-radius: 5rem;
+  min-width: 30vw;
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+}
+.login-label1 {
+  margin-top: 1rem;
+  padding-left: 10px;
+}
+.login-label2 {
+  padding-left: 10px;
+}
+.login-button {
+  padding: 0.5rem 2rem;
+  background: #fca311;
+  border: none;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  color: #14213d;
+  cursor: pointer;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  margin: 0 0 5% 70%;
+}
+.login-button:focus,
+.login-button.focus,
+.login-button:hover {
+  transform: scale(1.1);
+}
+.login-inputs {
+  padding: 1rem 0.5rem;
+  margin: 1rem 0;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+/*Alternative Sign In Options */
+.alt-buttons {
+  margin: 1rem;
+}
+
+.btn-google {
+  cursor: pointer;
+  color: #fff;
+  background-color: #dd4b39;
+  border-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 2rem;
+  margin-left: 3rem;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+}
+.btn-google:focus,
+.btn-google.focus {
+  color: #fff;
+  background-color: #c23321;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-google:hover {
+  color: #fff;
+  background-color: #c23321;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-facebook {
+  cursor: pointer;
+  color: #fff;
+  background-color: #3b5998;
+  border-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1.22rem;
+  margin-left: 3rem;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+}
+.btn-facebook:focus,
+.btn-facebook.focus {
+  color: #fff;
+  background-color: #2d4373;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-facebook:hover {
+  color: #fff;
+  background-color: #2d4373;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-github {
+  cursor: pointer;
+  color: #fff;
+  background-color: #444;
+  border-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 2rem;
+  margin-left: 3rem;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+}
+.btn-github:focus,
+.btn-github.focus {
+  color: #fff;
+  background-color: #2b2b2b;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-github:hover {
+  color: #fff;
+  background-color: #2b2b2b;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.circle1 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10%;
+  background: #fca311;
+  z-index: 1;
+}
+.circle2 {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: absolute;
+  top: 35%;
+  right: 1%;
+  background: #14213d;
+  z-index: 1;
+}
+::placeholder {
+  color: #14213d;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+}
+/*Media Query for Login Page*/
+@media screen and (max-width: 768px) {
+  #root {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .btn-github,
+  .btn-facebook,
+  .btn-google {
+    margin-left: 6%;
+  }
+  .login-parent {
+    display: block;
+    border-radius: 30px;
+    min-height: 145vh;
+  }
+  .login-cols1 {
+    border-radius: 30px;
+    border: none;
+  }
+  .login-cols2 {
+    margin-top: 2rem;
+  }
+  .circle1,
+  .circle2 {
+    display: none;
+  }
+  .login-button {
+    margin-left: 60%;
+  }
+}
+/******************Footer************/
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
+}
