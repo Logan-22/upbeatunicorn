@@ -457,3 +457,15 @@ button.active {
   align-items: center;
   color: rgba(0, 0, 0, 0.5);
 }
+
+/*! Alert */
+
+.danger {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: red;
+  font-size: 0.5rem;
+  background-color: inherit;
+}

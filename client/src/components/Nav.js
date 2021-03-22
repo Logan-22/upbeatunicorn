@@ -25,14 +25,14 @@ function Nav() {
         <Link className="nav-item" to="/">
           Home
         </Link>
-        <Link className="nav-item" to="/login">
-          Login
-        </Link>
         <Link className="nav-item" to="/about">
           About
         </Link>
-        <Link className="nav-item" to="/contact">
-          Contact
+        <Link className="nav-item" to="/signup">
+          Signup
+        </Link>
+        <Link className="nav-item" to="/login">
+          Login
         </Link>
       </ul>
       <div className="burger" onClick={navSlide}>
