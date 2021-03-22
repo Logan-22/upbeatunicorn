@@ -1,4 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://logan:loganand@pythonapp.y9a9h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jwtSecret": "LoganandisGreatand123Se*y123"
-}
