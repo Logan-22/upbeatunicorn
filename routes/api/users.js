@@ -14,7 +14,7 @@ const config = require("config");
 router.post(
   "/",
   [
-    check("name", "Name is Required").not().isEmpty(), //"name" from the post request should not be empty. If it is empty then the "Name is required error message" is sent.
+    // check("name", "Name is Required").not().isEmpty(), //"name" from the post request should not be empty. If it is empty then the "Name is required error message" is sent.
     check("email", "Please include a valid Email").isEmail(),
     check(
       "password",
@@ -28,7 +28,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() }); //Send a 400 Status Response along with JSON with {errors: <error messages array>}
     }
 
-    const { name, email, password } = req.body; //Destructuring Req.body
+    const { email, password } = req.body; //Destructuring Req.body
 
     //Registering User to Database if there are no Errors in Validation:
     try {
@@ -46,7 +46,7 @@ router.post(
         r: "pg", //Rating - PG
         d: "mm", //Default Image when the user image is not present
       });
-      user = new User({ name, email, avatar, password }); //Similar to {name:name,email:email,avatar:avatar,password:password}
+      user = new User({ email, avatar, password }); //Similar to {name:name,email:email,avatar:avatar,password:password}
       //* Encrypt Password:
       const salt = await bcrypt.genSalt(10); //Returns Promise .. Recommended 10 Rounds
       user.password = await bcrypt.hash(password, salt);

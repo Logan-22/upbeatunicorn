@@ -1,7 +1,33 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../actions/auth";
 
-function Nav() {
+function Nav({ logout, auth: { isAuthenticated, loading } }) {
+  const authLinks = (
+    <ul className="nav-list">
+      <Link onClick={logout} className="nav-item" to="/login">
+        Logout
+      </Link>
+    </ul>
+  );
+  const guestLinks = (
+    <ul className="nav-list">
+      <Link className="nav-item" to="/">
+        Home
+      </Link>
+      <Link className="nav-item" to="/dashboard">
+        Dashboard
+      </Link>
+      <Link className="nav-item" to="/signup">
+        Signup
+      </Link>
+      <Link className="nav-item" to="/login">
+        Login
+      </Link>
+    </ul>
+  );
   function navSlide() {
     const burgerClass = document.querySelector(".burger");
     const navList = document.querySelector(".nav-list");
@@ -21,20 +47,9 @@ function Nav() {
   return (
     <nav className="nav-bar">
       <h1 className="brand">LWL</h1>
-      <ul className="nav-list">
-        <Link className="nav-item" to="/">
-          Home
-        </Link>
-        <Link className="nav-item" to="/about">
-          About
-        </Link>
-        <Link className="nav-item" to="/signup">
-          Signup
-        </Link>
-        <Link className="nav-item" to="/login">
-          Login
-        </Link>
-      </ul>
+      {!loading && (
+        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+      )}
       <div className="burger" onClick={navSlide}>
         <div className="line1"></div>
         <div className="line2"></div>
@@ -44,4 +59,13 @@ function Nav() {
   );
 }
 
-export default Nav;
+Nav.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Nav);

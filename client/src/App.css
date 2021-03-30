@@ -32,7 +32,7 @@ body {
   width: 40%;
   display: flex;
   list-style: none;
-  justify-content: space-around;
+  justify-content: center;
 }
 .nav-item {
   padding: 0 2rem;
@@ -284,6 +284,7 @@ button.active {
 }
 .login-name {
   margin-left: 10px;
+  color: #fca311;
 }
 .login-cols2 {
   border-radius: 5rem;

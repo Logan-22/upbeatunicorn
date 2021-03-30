@@ -8,4 +8,4 @@ export const setAlert = (msg, alertType) => (dispatch) => {
     payload: { msg, alertType, id },
   });
   setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), 3000);
-}; // => => is possible using Thunk middleware.
+}; // Async Request in Action is possible with Thunk middleware , where the action creator can return a function and perform side effects.

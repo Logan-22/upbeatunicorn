@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { connect } from "react-redux"; //To connect the component to Redux. Whenever we use connect we also need to export the connect.
 import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 import Alert from "../layout/Alert";
 import { Provider } from "react-redux";
 import store from "../../store";
+import { Redirect } from "react-router-dom";
 
-function Signup({ setAlert }) {
+function Signup({ setAlert, register, isAuthenticated }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -26,30 +27,15 @@ function Signup({ setAlert }) {
     if (password !== password2) {
       setAlert("Passwords DO NOT Match", "danger");
     } else {
-      const newUser = {
-        email,
-        password,
-        password2,
-      };
-
-      try {
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-        const body = JSON.stringify(newUser);
-        const res = await axios.post(
-          "http://localhost:5000/api/users/",
-          body,
-          config
-        );
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      register({ email, password });
     }
   };
+
+  //* Redirect If Authenticated
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Provider store={store}>
@@ -97,12 +83,12 @@ function Signup({ setAlert }) {
                 </label>
               </div>
               <div className="login-label2">
-                <label htmlFor="pwd" name="password" className="login-label">
+                <label htmlFor="pwd2" name="password" className="login-label">
                   Confirm Password:
                   <div>
                     <input
                       type="password"
-                      id="pwd"
+                      id="pwd2"
                       name="password2"
                       value={password2}
                       className="login-inputs"
@@ -149,6 +135,12 @@ function Signup({ setAlert }) {
 
 Signup.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert })(Signup); //!Syntax : connect(State,{actions})
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Signup); //!Syntax : connect(State,{actions})
