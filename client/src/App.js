@@ -8,8 +8,10 @@ import Footer from "./components/Footer";
 import "./App.css";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
+import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
-//Redux Components
+//*Redux Components
 import { Provider } from "react-redux"; //*Provider connects the react and redux parts.
 import store from "./store";
 
@@ -31,6 +33,7 @@ function App() {
           <Route path="/" exact component={LandingPage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
         </Switch>
         <Footer />
       </Router>

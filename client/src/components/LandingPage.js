@@ -42,11 +42,13 @@ function LandingPage() {
         <div className="card">
           <div className="python">
             <div className="circle"></div>
-            <img src="./python.png" alt="Python" />
+            <img src="./codeLogo.png" alt="Programming Languages" />
           </div>
           <div className="info">
-            <h1 className="title">Python 3.0</h1>
-            <h3>Learn Python - PCAP Certification</h3>
+            <h1 className="title">CodeCertify</h1>
+            <h3>
+              Get Certified by our curated certification <br />Q & A's
+            </h3>
             <div className="buttons">
               <Link to="/login">
                 <button>Log In</button>

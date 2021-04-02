@@ -7,14 +7,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
-//! @route  POST api/users
-//! @desc   Register User
-//! @access Public
+//* @route  POST api/users
+//* @desc   Register User
+//* @access Public
 
 router.post(
   "/",
   [
-    // check("name", "Name is Required").not().isEmpty(), //"name" from the post request should not be empty. If it is empty then the "Name is required error message" is sent.
     check("email", "Please include a valid Email").isEmail(),
     check(
       "password",
@@ -55,9 +54,9 @@ router.post(
 
       //* Return JSON WEB TOKEN: When user is registered,they are logged in right away.To facilitate this return JSON WEB TOKEN.
       const payload = {
-        //Visit jwt.io
+        //*Visit jwt.io
         user: {
-          id: user.id, //Since mongoose , we can use id instead of "_id" from mongoDB
+          id: user.id, //*Since mongoose , we can use id instead of "_id" from mongoDB
         },
       };
       //TODO: Change the Expires In to 3600
@@ -71,7 +70,7 @@ router.post(
             res.json({ token });
           }
         }
-      ); //Place the JWT token
+      ); //*Place the JWT token
     } catch (err) {
       console.error(err.message);
       return res.status(500).send("Server Error");

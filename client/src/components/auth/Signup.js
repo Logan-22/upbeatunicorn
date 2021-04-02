@@ -25,7 +25,7 @@ function Signup({ setAlert, register, isAuthenticated }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert("Passwords DO NOT Match", "danger");
+      setAlert("Passwords Do Not Match", "danger");
     } else {
       register({ email, password });
     }

@@ -46,7 +46,7 @@ function Nav({ logout, auth: { isAuthenticated, loading } }) {
   }
   return (
     <nav className="nav-bar">
-      <h1 className="brand">LWL</h1>
+      <h1 className="brand">CodeCertify</h1>
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
       )}
