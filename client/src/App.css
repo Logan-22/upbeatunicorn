@@ -7,7 +7,7 @@ body {
   background-color: #fff;
 }
 .nav-bar {
-  position: fixed;
+  position: relative;
   top: 0;
   width: 100%;
   height: 10vh;
@@ -54,7 +54,7 @@ body {
   display: none;
 }
 
-/*To Remove Transitions in lower widths*/
+/**To Remove Transitions in lower widths*/
 
 @media screen and (max-width: 1024px) {
   .nav-list {
@@ -188,9 +188,9 @@ body {
 }
 .circle {
   margin: 1rem 0 0 0;
-  width: 12rem;
-  height: 12rem;
-  background: linear-gradient(to right, #14213d, #0000ee);
+  width: 11rem;
+  height: 11rem;
+  background: linear-gradient(to right, #14213d, #e5e5e5);
   position: absolute;
   border-radius: 50%;
   z-index: 1;
@@ -469,4 +469,14 @@ button.active {
   color: red;
   font-size: 0.5rem;
   background-color: inherit;
+}
+
+/*? Spinner */
+
+.spinner {
+  display: block;
+  min-height: 50vh;
+  width: 50vw;
+  backdrop-filter: blur(2rem);
+  margin: auto;
 }

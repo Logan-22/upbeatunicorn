@@ -1,7 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function LandingPage() {
+function LandingPage({ isAuthenticated }) {
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   function handleMouseMove(e) {
     if (window.innerWidth >= 768) {
       const card = document.querySelector(".card");
@@ -67,4 +72,12 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+LandingPage.propTypes = {
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(LandingPage);

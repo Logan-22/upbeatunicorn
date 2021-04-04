@@ -6,6 +6,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  CLEAR_PROFILE,
 } from "../actions/types";
 
 const initialState = {
@@ -20,16 +21,18 @@ export default function authReducer(state = initialState, action) {
   switch (type) {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem("token", payload.token); //If Sign Up is success , we want the user to login right away. Therefore , Setting the Token(from the back end) to Local Storage
+      localStorage.setItem("token", payload.token); //*If Sign Up is success , we want the user to login right away. Therefore , Setting the Token(from the back end) to Local Storage
       return { ...state, ...payload, isAuthenticated: true, loading: false };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case AUTH_ERROR:
     case LOGOUT:
-      localStorage.removeItem("token"); // Remove the token completely if the login has failed
+      localStorage.removeItem("token"); //* Remove the token completely if the login has failed
       return { ...state, token: null, isAuthenticated: false, loading: false };
     case USER_LOADED:
       return { ...state, isAuthenticated: true, loading: false, user: payload }; //* payload here is user ( email,gravatar,but not the password, see api/auth route )
+    case CLEAR_PROFILE:
+      return { ...state, profile: {}, repos: [], loading: false };
     default:
       return state;
   }

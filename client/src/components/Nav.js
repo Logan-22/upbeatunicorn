@@ -7,6 +7,9 @@ import { logout } from "../actions/auth";
 function Nav({ logout, auth: { isAuthenticated, loading } }) {
   const authLinks = (
     <ul className="nav-list">
+      <Link className="nav-item" to="/dashboard">
+        DashBoard
+      </Link>
       <Link onClick={logout} className="nav-item" to="/login">
         Logout
       </Link>
