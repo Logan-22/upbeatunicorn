@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import Alert from "../layout/Alert";
 
-function Login({ login, isAuthenticated }) {
+function Login({ login, isAuthenticated, theme }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -35,91 +36,115 @@ function Login({ login, isAuthenticated }) {
   }
 
   return (
-    <Fragment>
-      <div className="login-page">
-        <div className="login-parent">
+    <div className={theme}>
+      <main className="hundred-perc">
+        <section className="container login-container flexy height-mod">
           <div className="login-cols1">
-            <div className="login-title">
-              <h1 className="title">Login</h1>
-            </div>
-            {name.length > 0 && <h2 className="login-name">Hello {name}</h2>}
-            <form onSubmit={(e) => onSubmit(e)}>
-              <div className="login-label1">
-                <label htmlFor="urnme" name="username" className="login-label">
+            <h1 className="title large text-primary">Login</h1>
+            <p className="lead">
+              <i className="fas fa-user"> Sign into your Account</i>
+            </p>
+
+            <Alert />
+            <form className="form" onSubmit={(e) => onSubmit(e)}>
+              <h1 className="text-primary">{name && `Hello ${name}`}</h1>
+              <div className="form-group">
+                <label htmlFor="urnme" name="username" className="form-label">
                   Email ID:
-                  <div>
-                    <input
-                      type="email"
-                      id="urnme"
-                      name="email"
-                      value={email}
-                      className="login-inputs"
-                      placeholder="Enter Your Email Address"
-                      autoComplete="Off"
-                      onChange={handleUserNameChange}
-                      required
-                    />
-                  </div>
+                  <input
+                    type="email"
+                    id="urnme"
+                    name="email"
+                    value={email}
+                    className="form-input"
+                    placeholder="Email Address"
+                    autoComplete="Off"
+                    onChange={(e) => handleUserNameChange(e)}
+                    required
+                  />
                 </label>
               </div>
-              <div className="login-label2">
+              <div className="form-group">
                 <label htmlFor="pwd" name="password" className="login-label">
                   Password:
-                  <div>
-                    <input
-                      type="password"
-                      id="pwd"
-                      name="password"
-                      value={password}
-                      className="login-inputs"
-                      placeholder="Enter Your Password"
-                      autoComplete="Off"
-                      onChange={handlePasswordChange}
-                    />
-                  </div>
+                  <input
+                    type="password"
+                    id="pwd"
+                    name="password"
+                    value={password}
+                    className="form-input"
+                    placeholder="Password"
+                    autoComplete="Off"
+                    onChange={(e) => handlePasswordChange(e)}
+                  />
                 </label>
               </div>
               <div>
-                <button
+                <input
                   type="submit"
                   name="login"
-                  className="login-button"
-                  value="Login"
-                >
-                  <strong>Login</strong>
+                  className="btn btn-primary form-input pad-half"
+                  value="Log In "
+                />
+              </div>
+            </form>
+            <p className="my-1">
+              Don't have an Account?
+              <Link to="/login" className="btn btn-dark mx-1">
+                Register
+              </Link>
+            </p>
+          </div>
+          <div className="login-cols2">
+            <p className="lead">
+              <i className="fa fa-refresh text-primary">
+                <strong> Alternate Options</strong>
+              </i>
+            </p>
+            <form className="form">
+              <div className="form-group">
+                <button type="submit" className="btn btn-google">
+                  <div className="p-1 fo-1">
+                    <i className="fab fa-google"></i>
+                    <strong> Login With Google</strong>
+                  </div>
+                </button>
+              </div>
+              <div className="form-group">
+                <button type="submit" className="btn btn-facebook">
+                  <div className="padx-half-pady-one fo-1">
+                    <i className="fab fa-facebook"></i>
+                    <strong> Login With Facebook</strong>
+                  </div>
+                </button>
+              </div>
+              <div className="form-group">
+                <button type="submit" className="btn btn-github">
+                  <div className="p-1 fo-1">
+                    <i className="fab fa-github"></i>
+                    <strong> Login With Github</strong>
+                  </div>
                 </button>
               </div>
             </form>
           </div>
-          <div className="login-cols2">
-            <div className="login-title">
-              <h1 className="title">Alternate Options</h1>
-            </div>
-            <div className="alt-buttons">
-              <button className="btn-google">Sign in with Google</button>
-            </div>
-            <div className="alt-buttons">
-              <button className="btn-facebook">Sign in with Facebook</button>
-            </div>
-            <div className="alt-buttons">
-              <button className="btn-github">Sign in with Github</button>
-            </div>
-          </div>
-        </div>
-      </div>
+        </section>
+      </main>
       <div className="circle1"></div>
       <div className="circle2"></div>
-    </Fragment>
+    </div>
   );
 }
 
 login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
+  theme: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  theme: state.theme.theme,
 });
 
 export default connect(mapStateToProps, { login })(Login);

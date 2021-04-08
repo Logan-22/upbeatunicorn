@@ -5,7 +5,7 @@ import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer";
-import "./App.css";
+import "./dist/css/styles.min.css";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import Dashboard from "./components/dashboard/Dashboard";

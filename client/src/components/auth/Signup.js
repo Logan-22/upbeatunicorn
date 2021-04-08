@@ -4,11 +4,11 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 import Alert from "../layout/Alert";
-import { Provider } from "react-redux";
-import store from "../../store";
-import { Redirect } from "react-router-dom";
+// import { Provider } from "react-redux";
+// import store from "../../store";
+import { Redirect, Link } from "react-router-dom";
 
-function Signup({ setAlert, register, isAuthenticated }) {
+function Signup({ setAlert, register, isAuthenticated, theme }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -38,98 +38,122 @@ function Signup({ setAlert, register, isAuthenticated }) {
   }
 
   return (
-    <Provider store={store}>
-      <div className="login-page">
-        <div className="login-parent">
+    // <Provider store={store}>
+    <div className={theme}>
+      <main className="hundred-perc">
+        <section className="container login-container flexy">
           <div className="login-cols1">
-            <div className="login-title">
-              <h1 className="title">Sign Up</h1>
-            </div>
+            <h1 className="title large text-primary">Sign Up</h1>
+            <p className="lead">
+              <i className="fas fa-user"> Create Your Account</i>
+            </p>
+
             <Alert />
-            <form onSubmit={(e) => onSubmit(e)}>
-              <div className="login-label1">
-                <label htmlFor="urnme" name="username" className="login-label">
+            <form className="form" onSubmit={(e) => onSubmit(e)}>
+              <div className="form-group">
+                <label htmlFor="urnme" name="username" className="form-label">
                   Email ID:
-                  <div>
-                    <input
-                      type="email"
-                      id="urnme"
-                      name="email"
-                      value={email}
-                      className="login-inputs"
-                      placeholder="Enter Your Email Address"
-                      autoComplete="Off"
-                      onChange={(e) => onChange(e)}
-                      required
-                    />
-                  </div>
+                  <input
+                    type="email"
+                    id="urnme"
+                    name="email"
+                    value={email}
+                    className="form-input"
+                    placeholder="Email Address"
+                    autoComplete="Off"
+                    onChange={(e) => onChange(e)}
+                    required
+                  />
+                  <small className="form-text">
+                    This site uses Gravatar linked with your Email
+                  </small>
                 </label>
               </div>
-              <div className="login-label2">
+              <div className="form-group">
                 <label htmlFor="pwd" name="password" className="login-label">
                   Password:
-                  <div>
-                    <input
-                      type="password"
-                      id="pwd"
-                      name="password"
-                      value={password}
-                      className="login-inputs"
-                      placeholder="Enter Your Password"
-                      autoComplete="Off"
-                      onChange={(e) => onChange(e)}
-                    />
-                  </div>
+                  <input
+                    type="password"
+                    id="pwd"
+                    name="password"
+                    value={password}
+                    className="form-input"
+                    placeholder="Password"
+                    autoComplete="Off"
+                    onChange={(e) => onChange(e)}
+                  />
                 </label>
               </div>
-              <div className="login-label2">
+              <div className="form-group">
                 <label htmlFor="pwd2" name="password" className="login-label">
                   Confirm Password:
-                  <div>
-                    <input
-                      type="password"
-                      id="pwd2"
-                      name="password2"
-                      value={password2}
-                      className="login-inputs"
-                      placeholder="Enter Your Password"
-                      autoComplete="Off"
-                      onChange={(e) => onChange(e)}
-                    />
-                  </div>
+                  <input
+                    type="password"
+                    id="pwd2"
+                    name="password2"
+                    value={password2}
+                    className="form-input"
+                    placeholder="Confirm Password"
+                    autoComplete="Off"
+                    onChange={(e) => onChange(e)}
+                  />
                 </label>
               </div>
               <div>
-                <button
+                <input
                   type="submit"
                   name="login"
-                  className="login-button"
-                  value="Login"
-                >
-                  <strong>Sign Me Up!</strong>
+                  className="btn btn-primary form-input"
+                  value="Sign Me Up"
+                />
+              </div>
+            </form>
+            <p className="my-1">
+              Already have an Account?
+              <Link to="/login" className="btn btn-dark mx-1">
+                Login
+              </Link>
+            </p>
+          </div>
+          <div className="login-cols2">
+            <p className="lead">
+              <i className="fa fa-refresh text-primary">
+                <strong> Alternate Options</strong>
+              </i>
+            </p>
+            <form className="form">
+              <div className="form-group">
+                <button type="submit" className="btn btn-google">
+                  <div className="p-1 fo-1">
+                    <i className="fab fa-google"></i>
+                    <strong> Sign Up With Google</strong>
+                  </div>
+                </button>
+              </div>
+              <div className="form-group">
+                <button type="submit" className="btn btn-facebook">
+                  <div className="padx-half-pady-one fo-1">
+                    <i className="fab fa-facebook"></i>
+                    <strong> Sign Up With Facebook</strong>
+                  </div>
+                </button>
+              </div>
+              <div className="form-group">
+                <button type="submit" className="btn btn-github">
+                  <div className="p-1 fo-1">
+                    <i className="fab fa-github"></i>
+                    <strong> Sign Up With Github</strong>
+                  </div>
                 </button>
               </div>
             </form>
           </div>
-          <div className="login-cols2">
-            <div className="login-title">
-              <h1 className="title">Alternate Options</h1>
-            </div>
-            <div className="alt-buttons">
-              <button className="btn-google">Sign Up with Google</button>
-            </div>
-            <div className="alt-buttons">
-              <button className="btn-facebook">Sign Up with Facebook</button>
-            </div>
-            <div className="alt-buttons">
-              <button className="btn-github">Sign Up with Github</button>
-            </div>
-          </div>
-        </div>
-      </div>
+        </section>
+      </main>
       <div className="circle1"></div>
       <div className="circle2"></div>
-    </Provider>
+    </div>
+    // </Provider>
   );
 }
 
@@ -137,10 +161,12 @@ Signup.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
+  theme: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  theme: state.theme.theme,
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Signup); //!Syntax : connect(State,{actions})

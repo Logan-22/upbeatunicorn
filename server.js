@@ -18,7 +18,7 @@ app.use(cors()); // Use Cross Origin Resource Sharing to allow the front end to 
 
 //Define Routes
 
-app.use("/api/users", require("./routes/api/users")); // the route /api/users will be pertained to the "/" present in the file users.js
+app.use("/api/users", require("./routes/api/users")); //! the route /api/users will be pertained to the "/" present in the file users.js
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/post", require("./routes/api/post"));

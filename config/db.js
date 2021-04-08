@@ -3,13 +3,13 @@ const config = require("config");
 const db = config.get("mongoURI"); // To get the connections string from default.json
 
 const connectDB = async () => {
-  //Typically Async functions contains Try and catch blocks of code.
+  //*Typically Async functions contains Try and catch blocks of code.
   try {
     await mongoose.connect(db, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true,
-      useFindAndModify:false
+      useFindAndModify: false,
     }); //Returns a Promise , hence await
     console.log("MongoDb Connected");
   } catch (err) {

@@ -1,0 +1,326 @@
+@import "config";
+@import "utilities";
+@import "form";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.light {
+  color: $primary-color;
+  .nav-item {
+    color: $primary-color;
+    text-decoration: none;
+    &:hover {
+      color: $dark-color;
+    }
+  }
+  .navbar {
+    background-color: $light-color;
+  }
+  .card {
+    background-color: $light-color;
+  }
+  .circle {
+    background: linear-gradient(to bottom, $dark-color, $light-color);
+  }
+  .landing {
+    background-color: white;
+  }
+  .lead {
+    color: $semi-dark-color;
+  }
+  .btn-1 {
+    background-color: $primary-color;
+    color: $light-color;
+    &:hover {
+      background-color: $dark-color;
+      color: $primary-color;
+    }
+  }
+  .btn-2 {
+    background-color: $dark-color;
+    color: $primary-color;
+    &:hover {
+      background-color: $primary-color;
+      color: $light-color;
+    }
+  }
+  .footer {
+    color: lighten($semi-dark-color, 60%);
+  }
+  .container {
+    background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.4)
+    );
+    color: $dark-color;
+  }
+  .form-text {
+    color: $semi-dark-color;
+  }
+  .circle1 {
+    background-color: $primary-color;
+  }
+  .circle2 {
+    background-color: $dark-color;
+  }
+}
+
+.dark {
+  background-color: $dark-color;
+  color: $light-color;
+  .nav-item {
+    color: $light-color;
+    text-decoration: none;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  .navbar {
+    background-color: $dark-color;
+  }
+  .card {
+    background-color: $semi-dark-color;
+  }
+  .landing {
+    background-color: $dark-color;
+  }
+  .title {
+    color: $primary-color;
+  }
+  .circle {
+    background: linear-gradient(to bottom, $light-color, $dark-color);
+  }
+  .btn-1 {
+    background-color: $primary-color;
+    color: $dark-color;
+    &:hover {
+      background-color: $light-color;
+      color: $primary-color;
+    }
+  }
+  .btn-2 {
+    background-color: $light-color;
+    color: $primary-color;
+    &:hover {
+      background-color: $primary-color;
+      color: $dark-color;
+    }
+  }
+  .footer {
+    background-color: $dark-color;
+    color: darken($light-color, 60%);
+  }
+  .container {
+    background-color: $semi-dark-color;
+    color: $light-color;
+  }
+  .btn-primary {
+    background-color: $light-color;
+    color: $primary-color;
+    &:hover {
+      color: $dark-color;
+    }
+  }
+  .form-text {
+    color: $light-color;
+  }
+  .btn-dark {
+    background-color: $primary-color;
+    color: $light-color;
+    &:hover {
+      background-color: $light-color;
+      color: $primary-color;
+    }
+  }
+  .hundred-perc {
+    background-color: $dark-color;
+  }
+}
+/* //* Dark Mode Slider */
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+  background-color: $dark-color;
+  border-radius: 20px;
+  margin: 0 10px;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: $light-color;
+    top: 0.001px;
+    left: 0.001px;
+    transition: all ease 1s;
+  }
+}
+
+.checkbox {
+  display: none;
+  &:checked + .toggle {
+    background-color: $primary-color;
+  }
+  &:checked + .toggle::after {
+    left: 30px;
+  }
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-right: 25px;
+}
+
+/* //* Nav Bar */
+
+ul {
+  list-style: none;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px $primary-color;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 2rem;
+  ul {
+    display: flex;
+  }
+  .nav-item {
+    padding: 0.45rem;
+    margin: 0 0.45rem;
+    padding: 0 auto;
+  }
+}
+
+//* Landing Page
+
+.landing {
+  perspective: 1000px;
+}
+
+.landing-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+  height: 85vh;
+  margin: 10vh auto 0 auto;
+  padding-top: 3vh;
+}
+
+.card {
+  transform-style: preserve-3d;
+  border-radius: 30px;
+  width: 50%;
+  height: 100%;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+}
+
+.disp {
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    z-index: 2;
+    width: 12rem;
+    transition: all 0.75s ease-out;
+  }
+  .circle {
+    width: 11rem;
+    height: 11rem;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+  }
+}
+
+.info {
+  text-align: center;
+  .title {
+    transition: all 0.75s ease-out;
+  }
+  h3 {
+    font-weight: lighter;
+  }
+}
+
+.landing-btn {
+  margin: 3rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+}
+
+//* Footer
+
+.footer {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+//* Sign Up Page
+
+.login-container {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  width: 75%;
+  margin: 10vh auto 0 auto;
+  padding-top: 3vh;
+  border-radius: 30px;
+  position: relative;
+  backdrop-filter: blur(2rem);
+}
+
+.login-cols2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hundred-perc {
+  padding-top: 2vh;
+}
+
+.circle1 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  left: 10%;
+  bottom: 15%;
+  z-index: -1;
+}
+.circle2 {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: absolute;
+  top: 35%;
+  right: 1%;
+  z-index: -1;
+}
+
+.height-mod {
+  height: 83vh;
+}

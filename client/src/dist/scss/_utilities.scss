@@ -1,0 +1,153 @@
+//*Backgrounds
+
+.bg {
+  &-primary {
+    @include set-background-color($primary-color);
+  }
+  &-light {
+    @include set-background-color($light-color);
+    border: $semi-dark-color 1px solid;
+  }
+  &-dark {
+    @include set-background-color($dark-color);
+  }
+  &-success {
+    @include set-background-color($success-color);
+  }
+  &-danger {
+    @include set-background-color($danger-color);
+  }
+  &-white {
+    @include set-background-color(white);
+    border: $semi-dark-color 1px solid;
+  }
+}
+
+//*Text
+
+.x-large {
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+//*Buttons
+
+.btn {
+  display: inline-block;
+  padding: 0.4rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  outline: none;
+  text-decoration: none;
+  transition: all 0.2 ease;
+  border-radius: 30px;
+  &.btn-primary {
+    @include set-background-color($primary-color);
+    &:hover {
+      background: lighten($primary-color, 5%);
+    }
+  }
+  &.btn-dark {
+    @include set-background-color($dark-color);
+    &:hover {
+      background: lighten($dark-color, 5%);
+    }
+  }
+  &.btn-light {
+    @include set-background-color($light-color);
+    &:hover {
+      background: lighten($light-color, 5%);
+    }
+  }
+  &.btn-success {
+    @include set-background-color($success-color);
+    &:hover {
+      background: lighten($success-color, 5%);
+    }
+  }
+  &.btn-danger {
+    @include set-background-color($danger-color);
+    &:hover {
+      background: lighten($danger-color, 5%);
+    }
+  }
+  &.btn-google {
+    @include set-background-color($google-color);
+    &:hover {
+      background: lighten($google-color, 5%);
+    }
+  }
+  &.btn-facebook {
+    @include set-background-color($facebook-color);
+    &:hover {
+      background: lighten($facebook-color, 5%);
+    }
+  }
+  &.btn-github {
+    @include set-background-color($github-color);
+    &:hover {
+      background: lighten($github-color, 5%);
+    }
+  }
+}
+
+//* Container
+
+//* Texts
+
+.text-primary {
+  color: $primary-color;
+}
+
+//* Alerts
+
+.alert {
+  padding: 0.5rem 0.2rem;
+  margin: 0.5rem 0;
+  opacity: 0.9;
+  background-color: $light-color;
+  color: $semi-dark-color;
+  font-size: 0.8rem;
+  &-primary {
+    @include set-background-color($primary-color);
+  }
+  &-dark {
+    @include set-background-color($dark-color);
+  }
+  &-success {
+    @include set-background-color($success-color);
+  }
+  &-danger {
+    @include set-background-color($danger-color);
+  }
+}
+
+//*Flex Box
+
+.flexy {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pad-half {
+  padding: 0.5rem 0.5rem;
+}
+
+.padx-half-pady-one {
+  padding: 1rem 0.4rem;
+}
