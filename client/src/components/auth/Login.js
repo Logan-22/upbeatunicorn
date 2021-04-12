@@ -42,12 +42,12 @@ function Login({ login, isAuthenticated, theme }) {
           <div className="login-cols1">
             <h1 className="title large text-primary">Login</h1>
             <p className="lead">
-              <i className="fas fa-user"> Sign into your Account</i>
+              <i className="fas fa-user"> Sign in to your Account</i>
             </p>
 
             <Alert />
             <form className="form" onSubmit={(e) => onSubmit(e)}>
-              <h1 className="text-primary">{name && `Hello ${name}`}</h1>
+              <h1 className="text-success">{name && `Hello ${name}`}</h1>
               <div className="form-group">
                 <label htmlFor="urnme" name="username" className="form-label">
                   Email ID:
@@ -90,7 +90,7 @@ function Login({ login, isAuthenticated, theme }) {
             </form>
             <p className="my-1">
               Don't have an Account?
-              <Link to="/login" className="btn btn-dark mx-1">
+              <Link to="/signup" className="btn btn-dark mx-1">
                 Register
               </Link>
             </p>

@@ -7,6 +7,7 @@ const User = require("../../models/User");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
 const request = require("request");
+// const Post = require("../../models/Post"); //TODO: Uncomment
 
 //* @route  GET api/profile/me
 //* @desc   GET Own Profile
@@ -47,7 +48,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      //Checking if there are any Errors
+      //*Checking if there are any Errors
       return res.status(400).json({ errors: errors.array() });
     }
     const {
@@ -90,6 +91,7 @@ router.post(
 
       if (profile) {
         //* Update Existing Profile
+        console.log("here");
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
@@ -153,6 +155,7 @@ router.get("/user/:user_id", async (req, res) => {
 router.delete("/", auth, async (req, res) => {
   try {
     //TODO: REMOVE USER POSTS
+    // await Post.deleteMany({ user: req.user.id }); //* Remove All Posts
 
     await Profile.findOneAndRemove({ user: req.user.id }); //* Remove Profile
     await User.findOneAndRemove({ _id: req.user.id }); //* Remove User

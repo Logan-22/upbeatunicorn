@@ -8,6 +8,10 @@ $semi-dark-color: #393e46;
 $google-color: #dd4b39;
 $facebook-color: #3b5998;
 $github-color: #4078c0;
+$instagram-color: #cd486b;
+$twitter-color: #00acee;
+$linkedin-color: #0e76a8;
+$youtube-color: #c4302b;
 
 //*Dynamic Text color based on Background
 @function set-color($color) {
@@ -59,3 +63,15 @@ $measurements: (1, 2, 3, 4, 5);
     font-size: #{$measurement}rem;
   }
 }
+
+$heights: (75, 80, 85, 90, 95, 100);
+@each $height in $heights {
+  //*Heights
+  .h-#{$height} {
+    height: #{$height}vh;
+  }
+}
+
+//* Spinner
+
+$center: translate(-50%, -50%);

@@ -6,11 +6,11 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_PROFILE,
+  ACCOUNT_DELETED,
 } from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem("token"), //Token is Stored in Local Storage
+  token: localStorage.getItem("token"), //*Token is Stored in Local Storage
   isAuthenticated: null,
   loading: true,
   user: null,
@@ -27,12 +27,11 @@ export default function authReducer(state = initialState, action) {
     case LOGIN_FAIL:
     case AUTH_ERROR:
     case LOGOUT:
+    case ACCOUNT_DELETED:
       localStorage.removeItem("token"); //* Remove the token completely if the login has failed
       return { ...state, token: null, isAuthenticated: false, loading: false };
     case USER_LOADED:
       return { ...state, isAuthenticated: true, loading: false, user: payload }; //* payload here is user ( email,gravatar,but not the password, see api/auth route )
-    case CLEAR_PROFILE:
-      return { ...state, profile: {}, repos: [], loading: false };
     default:
       return state;
   }

@@ -6,17 +6,18 @@ import { logout } from "../actions/auth";
 import { setTheme } from "../actions/theme";
 
 function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
-  const [mode, setMode] = useState("false");
+  const [mode, setMode] = useState(localStorage.getItem("darkmode") === "true");
+
   const authLinks = (
     <ul>
       <li>
         <Link className="nav-item" to="/dashboard">
-          DashBoard
+          <i className="fas fa-chalkboard"></i> Dashboard
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/login" onClick={logout}>
-          Logout
+          <i className="fas fa-sign-out-alt"></i> Logout
         </Link>
       </li>
     </ul>
@@ -25,22 +26,22 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
     <ul className="nav-list">
       <li>
         <Link className="nav-item" to="/">
-          Home
+          <i className="fas fa-home"></i> Home
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/dashboard">
-          Dashboard
+          <i className="fas fa-chalkboard"></i> Dashboard
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/signup">
-          Signup
+          <i className="fas fa-user-plus"></i> Signup
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/login">
-          Login
+          <i className="fas fa-sign-in-alt"></i> Login
         </Link>
       </li>
     </ul>
@@ -62,9 +63,10 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
   //   });
   // }
   function handleCheck() {
+    setTheme(!mode);
     setMode(!mode);
-    setTheme(mode);
   }
+
   return (
     <div className={theme}>
       <nav className="navbar">
@@ -78,11 +80,11 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
             <strong>Light</strong>
             <input
               type="checkbox"
-              id="switch"
+              id="dynamicCheck"
               className="checkbox"
               onChange={handleCheck}
             />
-            <label htmlFor="switch" className="toggle"></label>
+            <label htmlFor="dynamicCheck" className="toggle"></label>
             <strong>Dark</strong>
           </li>
           {!loading && (
@@ -111,9 +113,12 @@ const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  logout: () => logout(),
-  setTheme: (mode) => dispatch(setTheme(mode)),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   logout: () => dispatch(logout()),
+//   setTheme: (mode) => dispatch(setTheme(mode)),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default connect(mapStateToProps, {
+  logout,
+  setTheme: (mode) => setTheme(mode),
+})(Nav);

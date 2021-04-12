@@ -1,10 +1,15 @@
 @import "config";
 @import "utilities";
 @import "form";
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -72,6 +77,17 @@ body {
   }
   .circle2 {
     background-color: $dark-color;
+  }
+  .btn-light {
+    &:hover {
+      background-color: $semi-dark-color;
+      .text-primary {
+        color: $light-color;
+      }
+    }
+  }
+  .disabled {
+    color: $semi-dark-color;
   }
 }
 
@@ -144,6 +160,20 @@ body {
   }
   .hundred-perc {
     background-color: $dark-color;
+  }
+  .btn-light {
+    .text-primary {
+      color: $light-color;
+    }
+    background-color: $primary-color;
+    color: $light-color;
+    &:hover {
+      background-color: $light-color;
+      color: $dark-color;
+      .text-primary {
+        color: $dark-color;
+      }
+    }
   }
 }
 /* //* Dark Mode Slider */
@@ -322,5 +352,41 @@ ul {
 }
 
 .height-mod {
-  height: 83vh;
+  height: 86.5vh;
+}
+
+//* Loading Spinner
+
+.spinner {
+  width: 100px;
+  display: block;
+  margin: 8vh auto;
+}
+
+.spinner-cont {
+  overflow: hidden;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//* DashBoard and Pages
+
+.pages {
+  margin-left: 3rem;
+}
+
+.social-link {
+  display: flex;
+  i {
+    padding: 0.5rem;
+    width: 4rem;
+  }
+}
+
+.dash-buttons {
+  .dash-links {
+    margin: 0.2rem 0.5rem;
+  }
 }

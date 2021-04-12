@@ -1,11 +1,24 @@
 import React, { Fragment } from "react";
+import { connect } from "react-redux";
 
-const Spinner = () => {
+const Spinner = ({ theme }) => {
   return (
     <Fragment>
-      <img src="./spinner.gif" className="spinner" alt="loading" />
+      <div className={theme}>
+        <div className="spinner-cont">
+          <img
+            src={theme === "light" ? "Spinner_Light.gif" : "Spinner_Dark.gif"}
+            className="spinner"
+            alt="loading"
+          />
+        </div>
+      </div>
     </Fragment>
   );
 };
 
-export default Spinner;
+const mapStateToProps = (state) => ({
+  theme: state.theme.theme,
+});
+
+export default connect(mapStateToProps)(Spinner);

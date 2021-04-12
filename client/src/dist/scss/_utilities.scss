@@ -109,13 +109,34 @@
 
 //* Texts
 
-.text-primary {
-  color: $primary-color;
+.text {
+  &-primary {
+    color: $primary-color;
+  }
+  &-success {
+    color: $success-color;
+  }
+  &-twitter {
+    color: $twitter-color;
+  }
+  &-facebook {
+    color: $facebook-color;
+  }
+  &-youtube {
+    color: $youtube-color;
+  }
+  &-linkedin {
+    color: $linkedin-color;
+  }
+  &-instagram {
+    color: $instagram-color;
+  }
 }
 
 //* Alerts
 
 .alert {
+  width: 75%;
   padding: 0.5rem 0.2rem;
   margin: 0.5rem 0;
   opacity: 0.9;
@@ -150,4 +171,8 @@
 
 .padx-half-pady-one {
   padding: 1rem 0.4rem;
+}
+
+.fsize-half {
+  font-size: 0.85rem;
 }

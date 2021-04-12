@@ -12,9 +12,30 @@
   input[type="password"],
   input[type="date"],
   select,
-  text-area {
+  textarea {
     display: block;
     width: 100%;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: solid 1px $primary-color;
+    background-color: $light-color;
+    font-family: "Roboto", sans-serif;
+  }
+  input[type="submit"] {
+    padding: 0.75rem;
+    font-weight: bold;
+  }
+}
+
+.createprofile {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"],
+  select,
+  textarea {
+    display: block;
+    width: 75%;
     padding: 0.5rem;
     font-size: 1.2rem;
     border: solid 1px $primary-color;
