@@ -38,12 +38,12 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
   }
 
   return (
-    // <Provider store={store}>
+    //* <Provider store={store}>
     <div className={theme}>
-      <main className="hundred-perc">
+      <main className="hundred-perc flexy nav-margin">
         <section className="container login-container flexy">
           <div className="login-cols1">
-            <h1 className="title large text-primary">Sign Up</h1>
+            <h1 className="title large text-primary pt-1">Sign Up</h1>
             <p className="lead">
               <i className="fas fa-user"> Create Your Account</i>
             </p>
@@ -103,7 +103,7 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
                 <input
                   type="submit"
                   name="login"
-                  className="btn btn-primary form-input"
+                  className="btn btn-primary form-input mt-1"
                   value="Sign Me Up"
                 />
               </div>

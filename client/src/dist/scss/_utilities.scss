@@ -103,6 +103,13 @@
       background: lighten($github-color, 5%);
     }
   }
+  &.btn-custom {
+    background-color: $light-color;
+    color: $primary-color;
+    &:hover {
+      background: lighten($dark-color, 5%);
+    }
+  }
 }
 
 //* Container
@@ -115,6 +122,9 @@
   }
   &-success {
     color: $success-color;
+  }
+  &-semidark {
+    color: $semi-dark-color;
   }
   &-twitter {
     color: $twitter-color;
@@ -157,6 +167,68 @@
   }
 }
 
+//* Text Color of Social Medias
+
+.col-facebook {
+  color: $facebook-color;
+  &:hover {
+    color: lighten($facebook-color, 10%);
+  }
+}
+.col-youtube {
+  color: $youtube-color;
+  &:hover {
+    color: lighten($youtube-color, 10%);
+  }
+}
+.col-instagram {
+  color: $instagram-color;
+  &:hover {
+    color: lighten($instagram-color, 10%);
+  }
+}
+.col-linkedin {
+  color: $linkedin-color;
+  &:hover {
+    color: lighten($linkedin-color, 10%);
+  }
+}
+.col-twitter {
+  color: $twitter-color;
+  &:hover {
+    color: lighten($twitter-color, 10%);
+  }
+}
+
+//*Badges
+
+.badge {
+  font-size: 0.8rem;
+  padding: 0.1rem;
+  text-align: center;
+  margin: 0.3rem;
+  &.badge-primary {
+    @include set-background-color($primary-color);
+  }
+  &.badge-dark {
+    @include set-background-color($dark-color);
+  }
+  &.badge-success {
+    @include set-background-color($success-color);
+  }
+  &.badge-danger {
+    @include set-background-color($danger-color);
+  }
+}
+
+//* Line
+
+.line {
+  height: 2px;
+
+  margin: 1.5rem 0;
+}
+
 //*Flex Box
 
 .flexy {
@@ -175,4 +247,22 @@
 
 .fsize-half {
   font-size: 0.85rem;
+}
+
+.nav-margin {
+  margin-top: 10vh;
+}
+
+.bot-padding {
+  padding-bottom: 1rem;
+}
+
+.round-img {
+  border-radius: 50%;
+}
+.pad-half {
+  padding: 0.5rem;
+}
+.pad-half-bottom {
+  padding-bottom: 0.5rem;
 }

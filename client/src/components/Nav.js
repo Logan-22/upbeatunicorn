@@ -16,6 +16,11 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
         </Link>
       </li>
       <li>
+        <Link className="nav-item" to="/profiles">
+          <i className="fas fa-users"></i> Profiles
+        </Link>
+      </li>
+      <li>
         <Link className="nav-item" to="/login" onClick={logout}>
           <i className="fas fa-sign-out-alt"></i> Logout
         </Link>
@@ -32,6 +37,11 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
       <li>
         <Link className="nav-item" to="/dashboard">
           <i className="fas fa-chalkboard"></i> Dashboard
+        </Link>
+      </li>
+      <li>
+        <Link className="nav-item" to="/profiles">
+          <i className="fas fa-users"></i> Profiles
         </Link>
       </li>
       <li>

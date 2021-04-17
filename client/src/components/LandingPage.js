@@ -45,7 +45,7 @@ function LandingPage({ isAuthenticated, theme }) {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="card">
+          <div className="card pt-1">
             <div className="disp">
               <div className="circle"></div>
               <img src="./codeLogo.png" alt="Programming Languages" />

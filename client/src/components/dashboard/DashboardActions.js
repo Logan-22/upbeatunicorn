@@ -14,7 +14,7 @@ const DashboardActions = ({ theme }) => {
           <span className="text-primary p-1"> Edit Profile</span>
         </Link>
         <Link to="/add-experience" className="btn btn-light dash-links">
-          <i className="fab fa-black-tie text-primary"></i>
+          <i className="fas fa-user-tie text-primary"></i>
           <span className="text-primary p-1"> Add Experience</span>
         </Link>
         <Link to="/add-education" className="btn btn-light dash-links">

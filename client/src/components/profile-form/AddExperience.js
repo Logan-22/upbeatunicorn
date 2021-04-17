@@ -26,13 +26,14 @@ const AddExperience = ({ theme, addExperience, history }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addExperience(formData, history);
+    window.scrollTo(0, 0);
   };
   return (
     <div className={theme}>
-      <div className="hundred-perc pages">
-        <h1 className="large m-2 my-5 text-primary">Add Experience</h1>
+      <div className="hundred-perc pages nav-margin">
+        <h1 className="large nav-margin text-primary pt-1">Add Experience</h1>
         <p className="lead">
-          <i className="fas fa-user"></i> Add your career experience here.
+          <i className="fas fa-user-tie"></i> Add your career experience here.
         </p>
         <small>* - Mandatory Fields</small>
         <Alert />

@@ -74,7 +74,9 @@ const EditProfile = ({
     <Fragment>
       <div className={theme}>
         <div className="hundred-perc pages">
-          <h1 className="large m-2 my-5 text-primary">Edit Your Profile</h1>
+          <h1 className="large nav-margin text-primary pt-1">
+            Edit Your Profile
+          </h1>
           <p className="lead">
             <i className="fas fa-user"></i> Please Provide your updated details
             to edit your profile

@@ -37,10 +37,10 @@ function Login({ login, isAuthenticated, theme }) {
 
   return (
     <div className={theme}>
-      <main className="hundred-perc">
-        <section className="container login-container flexy height-mod">
+      <main className="hundred-perc flexy nav-margin">
+        <section className="container login-container flexy">
           <div className="login-cols1">
-            <h1 className="title large text-primary">Login</h1>
+            <h1 className="title large text-primary pt-1">Login</h1>
             <p className="lead">
               <i className="fas fa-user"> Sign in to your Account</i>
             </p>
@@ -83,8 +83,8 @@ function Login({ login, isAuthenticated, theme }) {
                 <input
                   type="submit"
                   name="login"
-                  className="btn btn-primary form-input pad-half"
-                  value="Log In "
+                  className="btn btn-primary form-input mt-2 p-1"
+                  value="Log In"
                 />
               </div>
             </form>

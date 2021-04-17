@@ -43,13 +43,16 @@ const CreateProfile = ({ theme, createProfile, history }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     createProfile(formData, history, false);
+    window.scrollTo(0, 0);
   };
 
   return (
     <Fragment>
       <div className={theme}>
         <div className="hundred-perc pages">
-          <h1 className="large m-2 my-5 text-primary">Create Your Profile</h1>
+          <h1 className="large nav-margin text-primary pt-1">
+            Create Your Profile
+          </h1>
           <p className="lead">
             <i className="fas fa-user"></i> Please Provide your details to
             create profile

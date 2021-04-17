@@ -16,6 +16,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 1.2rem;
   line-height: 1.6;
+  height: 100%;
 }
 
 .light {
@@ -81,6 +82,7 @@ body {
   .btn-light {
     &:hover {
       background-color: $semi-dark-color;
+      color: $primary-color;
       .text-primary {
         color: $light-color;
       }
@@ -88,6 +90,55 @@ body {
   }
   .disabled {
     color: $semi-dark-color;
+  }
+  .profile-top {
+    background-color: $primary-color;
+    border: 1px $dark-color dotted;
+  }
+  .line {
+    background: $semi-dark-color;
+  }
+  .profile-about {
+    background-color: $light-color;
+    border: 1px $dark-color dotted;
+  }
+  .profile-edu,
+  .profile-exp {
+    border: 1px $dark-color dotted;
+    background-color: $light-color;
+  }
+  .profile-github {
+    border: 1px $dark-color dotted;
+    background-color: $light-color;
+  }
+  .repo {
+    border: 1px $dark-color dotted;
+    background-color: $white-color;
+    a {
+      color: $dark-color;
+      text-decoration: none;
+      &:hover {
+        background-color: $dark-color;
+        color: $light-color;
+      }
+    }
+  }
+  .text-normal {
+    color: $dark-color;
+    h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      color: $semi-dark-color;
+    }
+  }
+  .icons {
+    background-color: $light-color;
+  }
+  .badge-custom {
+    background-color: $dark-color;
+    color: $light-color;
   }
 }
 
@@ -175,6 +226,63 @@ body {
       }
     }
   }
+  .profile {
+    background-color: $semi-dark-color;
+  }
+  .profile-top {
+    background-color: $primary-color;
+    border: 1px $light-color dotted;
+  }
+  .line {
+    background: $primary-color;
+  }
+  .text-semidark {
+    color: $semi-dark-color;
+  }
+  .profile-about {
+    background-color: $semi-dark-color;
+    border: 1px $light-color dotted;
+  }
+  .profile-edu,
+  .profile-exp {
+    border: 1px $light-color dotted;
+    background-color: $semi-dark-color;
+  }
+  .profile-github {
+    border: 1px $light-color dotted;
+    background-color: $semi-dark-color;
+  }
+
+  .text-normal {
+    color: $white-color;
+    h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      color: $light-color;
+    }
+  }
+  .icons {
+    background-color: $semi-dark-color;
+  }
+  .repo {
+    border: 1px $light-color dotted;
+    background-color: $dark-color;
+    a {
+      color: $primary-color;
+      &:hover {
+        background-color: $light-color;
+        color: $dark-color;
+      }
+    }
+  }
+  .badge {
+    color: $dark-color;
+  }
+  .badge-custom {
+    background-color: $light-color;
+  }
 }
 /* //* Dark Mode Slider */
 
@@ -254,7 +362,7 @@ ul {
   align-items: center;
   justify-content: center;
   width: 70vw;
-  height: 85vh;
+  height: 90vh;
   margin: 10vh auto 0 auto;
   padding-top: 3vh;
 }
@@ -263,7 +371,7 @@ ul {
   transform-style: preserve-3d;
   border-radius: 30px;
   width: 50%;
-  height: 100%;
+  height: 90%;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
 }
 
@@ -290,6 +398,8 @@ ul {
   text-align: center;
   .title {
     transition: all 0.75s ease-out;
+    position: relative;
+    z-index: 2;
   }
   h3 {
     font-weight: lighter;
@@ -305,8 +415,13 @@ ul {
 //* Footer
 
 .footer {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  opacity: 0.7;
 }
 
 //* Sign Up Page
@@ -314,11 +429,10 @@ ul {
 .login-container {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
   width: 75%;
-  margin: 10vh auto 0 auto;
-  padding-top: 3vh;
   border-radius: 30px;
   position: relative;
   backdrop-filter: blur(2rem);
+  height: 100%;
 }
 
 .login-cols2 {
@@ -329,7 +443,7 @@ ul {
 }
 
 .hundred-perc {
-  padding-top: 2vh;
+  min-height: 90vh;
 }
 
 .circle1 {
@@ -349,10 +463,6 @@ ul {
   top: 35%;
   right: 1%;
   z-index: -1;
-}
-
-.height-mod {
-  height: 86.5vh;
 }
 
 //* Loading Spinner
@@ -388,5 +498,97 @@ ul {
 .dash-buttons {
   .dash-links {
     margin: 0.2rem 0.5rem;
+  }
+}
+
+//* Profiles Page
+
+.profile {
+  display: grid;
+  grid-template-columns: 2fr 4fr 2fr;
+  align-items: center;
+  grid-gap: 2rem;
+  line-height: 1.8;
+}
+
+.profiles {
+  width: 80%;
+}
+
+//* Profile Page
+
+.profile-grid {
+  display: grid;
+  grid-template-areas: "top top" "about about" "exp edu" "github github";
+  grid-gap: 1rem;
+  width: 80%;
+  margin: 2rem auto;
+
+  .profile-top {
+    grid-area: top;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    img {
+      width: 250px;
+    }
+    .icons {
+      width: 100%;
+    }
+    .icons a {
+      margin: 0 0.5rem;
+    }
+  }
+
+  .profile-about {
+    grid-area: about;
+    text-align: center;
+    .skills {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  .profile-exp {
+    grid-area: exp;
+  }
+  .profile-edu {
+    grid-area: edu;
+  }
+  .profile-exp,
+  .profile-edu {
+    & > div {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: gray 1px dotted;
+      &:last-child {
+        border: none;
+      }
+    }
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+  .profile-github {
+    grid-area: github;
+
+    .repo {
+      display: flex;
+      & > div:first-child {
+        flex: 7;
+        flex-basis: 70%;
+      }
+      & > div:last-child {
+        flex: 3;
+        flex-basis: 20%;
+      }
+      a {
+        text-decoration: none;
+      }
+    }
   }
 }

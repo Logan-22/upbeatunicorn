@@ -34,13 +34,14 @@ const AddEducation = ({ theme, addEducation, history }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addEducation(formData, history);
+    window.scrollTo(0, 0);
   };
   return (
     <div className={theme}>
       <div className="hundred-perc pages">
-        <h1 className="large m-2 my-5 text-primary">Add Education</h1>
+        <h1 className="large nav-margin text-primary">Add Education</h1>
         <p className="lead">
-          <i className="fas fa-user"></i> Add your education here.
+          <i class="fas fa-user-graduate"></i> Add your education here.
         </p>
         <small>* - Mandatory Fields</small>
         <Alert />

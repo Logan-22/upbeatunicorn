@@ -12,6 +12,7 @@ $instagram-color: #cd486b;
 $twitter-color: #00acee;
 $linkedin-color: #0e76a8;
 $youtube-color: #c4302b;
+$white-color: #fff;
 
 //*Dynamic Text color based on Background
 @function set-color($color) {
@@ -62,13 +63,36 @@ $measurements: (1, 2, 3, 4, 5);
   .fo-#{$measurement} {
     font-size: #{$measurement}rem;
   }
+
+  //*Margin Top
+  .mt-#{$measurement} {
+    margin-top: #{$measurement}rem;
+  }
+
+  //*Margin Bottom
+  .mb-#{$measurement} {
+    margin-bottom: #{$measurement}rem;
+  }
+  //*padding Top
+  .pt-#{$measurement} {
+    padding-top: #{$measurement}rem;
+  }
+
+  //*Padding Bottom
+  .pb-#{$measurement} {
+    padding-bottom: #{$measurement}rem;
+  }
+  //*Margin Left
+  .ml-#{$measurement} {
+    margin-left: #{$measurement}rem;
+  }
 }
 
 $heights: (75, 80, 85, 90, 95, 100);
 @each $height in $heights {
   //*Heights
   .h-#{$height} {
-    height: #{$height}vh;
+    min-height: #{$height}vh;
   }
 }
 

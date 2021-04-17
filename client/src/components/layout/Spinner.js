@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import spinnerLight from "./Spinner_Light.gif";
+import spinnerDark from "./Spinner_Dark.gif";
 
 const Spinner = ({ theme }) => {
   return (
@@ -7,7 +9,7 @@ const Spinner = ({ theme }) => {
       <div className={theme}>
         <div className="spinner-cont">
           <img
-            src={theme === "light" ? "Spinner_Light.gif" : "Spinner_Dark.gif"}
+            src={theme === "light" ? spinnerLight : spinnerDark}
             className="spinner"
             alt="loading"
           />

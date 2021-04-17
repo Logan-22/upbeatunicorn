@@ -25,8 +25,8 @@ const Dashboard = ({
   ) : (
     <Fragment>
       <div className={theme}>
-        <div className="hundred-perc h-95 pages">
-          <h1 className="large m-2 my-5 text-primary">Dashboard</h1>
+        <div className="hundred-perc pages">
+          <h1 className="large nav-margin text-primary pt-1">Dashboard</h1>
           <p className="lead">
             <i className="fas fa-user"></i> Welcome{" "}
             {profile && profile.name
@@ -38,7 +38,7 @@ const Dashboard = ({
               <DashboardActions />
               <Experience experience={profile.experience} />
               <Education education={profile.education} />
-              <div className="my-2">
+              <div className="mt-2 bot-padding">
                 <button
                   onClick={() => deleteAccount()}
                   className="btn btn-danger"
