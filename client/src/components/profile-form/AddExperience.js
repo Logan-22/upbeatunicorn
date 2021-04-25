@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { addExperience } from "../../actions/profile";
 import Alert from "../layout/Alert";
 
-const AddExperience = ({ theme, addExperience, history }) => {
+const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
     title: "",
     company: "",
@@ -29,8 +29,8 @@ const AddExperience = ({ theme, addExperience, history }) => {
     window.scrollTo(0, 0);
   };
   return (
-    <div className={theme}>
-      <div className="hundred-perc pages nav-margin">
+    <Fragment>
+      <div className="hundred-perc pages">
         <h1 className="large nav-margin text-primary pt-1">Add Experience</h1>
         <p className="lead">
           <i className="fas fa-user-tie"></i> Add your career experience here.
@@ -112,24 +112,17 @@ const AddExperience = ({ theme, addExperience, history }) => {
             </div>
             <input type="submit" className="btn btn-primary my-1" />
             <Link to="/dashboard" className="btn btn-dark m-1">
-              <i class="fas fa-backward"></i> Go Back
+              <i className="fas fa-backward"></i> Go Back
             </Link>
           </div>
         </form>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
 AddExperience.propTypes = {
-  theme: PropTypes.string.isRequired,
   addExperience: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  theme: state.theme.theme,
-});
-
-export default connect(mapStateToProps, { addExperience })(
-  withRouter(AddExperience)
-);
+export default connect(null, { addExperience })(withRouter(AddExperience));

@@ -1,10 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ProfileItem = ({
-  theme,
   profile: {
     user: { _id, avatar },
     name,
@@ -14,7 +12,7 @@ const ProfileItem = ({
   },
 }) => {
   return (
-    <div className={theme}>
+    <Fragment>
       <div className="profile p-1 mt-1">
         <img className="round-img" src={avatar} alt={name} />
         <div>
@@ -31,22 +29,18 @@ const ProfileItem = ({
           <ul>
             {skills.map((skill, index) => (
               <li key={index} className="text-success">
-                <i className="fas fa-check"></i> {skill}</li>
+                <i className="fas fa-check"></i> {skill}
+              </li>
             ))}
           </ul>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
 ProfileItem.propTypes = {
-  theme: PropTypes.string.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  theme: state.theme.theme,
-});
-
-export default connect(mapStateToProps)(ProfileItem);
+export default ProfileItem;

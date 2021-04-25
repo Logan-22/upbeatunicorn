@@ -1,23 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Fragment } from "react";
 
 var date = new Date();
 
-function Footer({ theme }) {
+function Footer() {
   return (
-    <div className={theme}>
+    <Fragment>
       <div className="footer">&copy; CodeCertify {date.getFullYear()}</div>
-    </div>
+    </Fragment>
   );
 }
 
-Footer.propTypes = {
-  theme: PropTypes.string.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  theme: state.theme.theme,
-});
-
-export default connect(mapStateToProps)(Footer);
+export default Footer;

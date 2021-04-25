@@ -1,0 +1,31 @@
+@media (max-width: 700px) {
+  .hide-sm {
+    display: none;
+  }
+  .w-75 {
+    width: 90%;
+  }
+  //*Navbar
+  .mob-nav {
+    min-width: 100vw;
+  }
+  .navbar {
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 100vw;
+    ul {
+      text-align: center;
+      justify-content: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+  }
+  .nav-margin {
+    margin: 0px;
+  }
+  .landing {
+    margin: 0px;
+  }
+}

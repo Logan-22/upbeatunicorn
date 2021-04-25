@@ -1,6 +1,7 @@
 @import "config";
 @import "utilities";
 @import "form";
+@import "codeeditor";
 
 * {
   box-sizing: border-box;
@@ -19,6 +20,8 @@ body {
   height: 100%;
 }
 
+//! Light Mode Styles
+
 .light {
   color: $primary-color;
   .nav-item {
@@ -30,6 +33,9 @@ body {
   }
   .navbar {
     background-color: $light-color;
+  }
+  .drk {
+    color: $semi-dark-color;
   }
   .card {
     background-color: $light-color;
@@ -91,6 +97,9 @@ body {
   .disabled {
     color: $semi-dark-color;
   }
+  .profile {
+    background-color: $light-color;
+  }
   .profile-top {
     background-color: $primary-color;
     border: 1px $dark-color dotted;
@@ -140,7 +149,113 @@ body {
     background-color: $dark-color;
     color: $light-color;
   }
+  .table {
+    th {
+      background-color: $light-color;
+    }
+    td {
+      color: $dark-color;
+      background-color: lighten($light-color, 4%);
+    }
+  }
+  .light-workaround {
+    color: $semi-dark-color;
+  }
+  .code-edit-container {
+    border: 1px solid $dark-color;
+    background-color: $light-color;
+  }
+  .post {
+    border: 1px dotted $semi-dark-color;
+  }
+  .post-content {
+    color: $dark-color;
+  }
+  .post-date {
+    color: $semi-dark-color;
+    font-size: 0.9rem;
+  }
+  //* Prism Default Theme
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: $black-color;
+    text-shadow: 0 1px $light-color;
+  }
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: slategray;
+  }
+
+  .token.punctuation {
+    color: #999;
+  }
+
+  .token.namespace {
+    opacity: 0.7;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #905;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #690;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    color: #9a6e3a;
+    /* This background color was intended by the author of this theme. */
+    background: hsla(0, 0%, 100%, 0.5);
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: #07a;
+  }
+
+  .token.function,
+  .token.class-name {
+    color: #dd4a68;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: #e90;
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+  .token.italic {
+    font-style: italic;
+  }
+
+  .token.entity {
+    cursor: help;
+  }
 }
+//! Dark Mode Styles
 
 .dark {
   background-color: $dark-color;
@@ -154,6 +269,9 @@ body {
   }
   .navbar {
     background-color: $dark-color;
+  }
+  .drk {
+    color: $primary-color;
   }
   .card {
     background-color: $semi-dark-color;
@@ -283,8 +401,117 @@ body {
   .badge-custom {
     background-color: $light-color;
   }
+  .table {
+    th {
+      background-color: $semi-dark-color;
+      color: $primary-color;
+    }
+    td {
+      color: $light-color;
+      background-color: lighten($semi-dark-color, 5%);
+    }
+  }
+  .code-edit-container {
+    border: 1px solid $primary-color;
+    background-color: $semi-dark-color;
+  }
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: $light-color;
+  }
+  .post {
+    border: 1px dotted $primary-color;
+  }
+  .post-content {
+    color: $primary-color;
+  }
+  .post-date {
+    color: $light-color;
+    font-size: 0.9rem;
+  }
+  //* Prism Theme Okadia
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: #f8f8f2;
+    background: none;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  }
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #8292a2;
+  }
+
+  .token.punctuation {
+    color: #f8f8f2;
+  }
+
+  .token.namespace {
+    opacity: 0.7;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #f92672;
+  }
+
+  .token.boolean,
+  .token.number {
+    color: #ae81ff;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #a6e22e;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string,
+  .token.variable {
+    color: #f8f8f2;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.function,
+  .token.class-name {
+    color: #e6db74;
+  }
+
+  .token.keyword {
+    color: #66d9ef;
+  }
+
+  .token.regex,
+  .token.important {
+    color: #fd971f;
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+  .token.italic {
+    font-style: italic;
+  }
+
+  .token.entity {
+    cursor: help;
+  }
 }
-/* //* Dark Mode Slider */
+//* Dark Mode Slider */
 
 .toggle {
   position: relative;
@@ -324,7 +551,7 @@ body {
   margin-right: 25px;
 }
 
-/* //* Nav Bar */
+//* Nav Bar */
 
 ul {
   list-style: none;
@@ -428,7 +655,6 @@ ul {
 
 .login-container {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-  width: 75%;
   border-radius: 30px;
   position: relative;
   backdrop-filter: blur(2rem);
@@ -473,12 +699,12 @@ ul {
   margin: 8vh auto;
 }
 
-.spinner-cont {
-  overflow: hidden;
-  height: 90vh;
+.center-cont {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 90vh;
+  position: relative;
 }
 
 //* DashBoard and Pages
@@ -511,17 +737,12 @@ ul {
   line-height: 1.8;
 }
 
-.profiles {
-  width: 80%;
-}
-
 //* Profile Page
 
 .profile-grid {
   display: grid;
   grid-template-areas: "top top" "about about" "exp edu" "github github";
   grid-gap: 1rem;
-  width: 80%;
   margin: 2rem auto;
 
   .profile-top {
@@ -592,3 +813,29 @@ ul {
     }
   }
 }
+
+//* Posts Page
+
+.post-form-header {
+  padding: 0.5rem;
+}
+.post {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 2rem;
+  align-items: center;
+  border: 1px solid red;
+  & > div:first-child {
+    text-align: center;
+  }
+  img {
+    width: 150px;
+  }
+}
+.profile-link {
+  text-decoration: none;
+}
+
+//* Mobile
+
+@import "mobile";

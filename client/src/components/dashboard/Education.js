@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
 import { deleteEducation } from "../../actions/profile";
 
-const Education = ({ education, theme, deleteEducation }) => {
+const Education = ({ education, deleteEducation }) => {
   const educations = education.map((edu) => (
     <tr key={edu._id}>
       <td>{edu.school}</td>
@@ -28,31 +28,30 @@ const Education = ({ education, theme, deleteEducation }) => {
     </tr>
   ));
   return (
-    <div className={theme}>
-      <h2 className="my-2">Education Credentials</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>School</th>
-            <th className="hide-sm">Degree</th>
-            <th className="hide-sm">Years</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>{educations}</tbody>
-      </table>
-    </div>
+    <Fragment>
+      <h2 className="my-2 text-primary">Education Credentials</h2>
+      {education.length === 0 ? (
+        <h4 className="light-workaround">No Education Credentials Recorded</h4>
+      ) : (
+        <table className="table">
+          <thead>
+            <tr>
+              <th>School</th>
+              <th className="hide-sm">Degree</th>
+              <th className="hide-sm">Years</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>{educations}</tbody>
+        </table>
+      )}
+    </Fragment>
   );
 };
 
 Education.propTypes = {
-  theme: PropTypes.string.isRequired,
   education: PropTypes.array.isRequired,
   deleteEducation: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  theme: state.theme.theme,
-});
-
-export default connect(mapStateToProps, { deleteEducation })(Education);
+export default connect(null, { deleteEducation })(Education);

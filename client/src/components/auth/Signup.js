@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { connect } from "react-redux"; //To connect the component to Redux. Whenever we use connect we also need to export the connect.
+import React, { Fragment, useState } from "react";
+import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 import Alert from "../layout/Alert";
-// import { Provider } from "react-redux";
-// import store from "../../store";
 import { Redirect, Link } from "react-router-dom";
 
 function Signup({ setAlert, register, isAuthenticated, theme }) {
@@ -39,16 +37,16 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
 
   return (
     //* <Provider store={store}>
-    <div className={theme}>
+    <Fragment>
       <main className="hundred-perc flexy nav-margin">
-        <section className="container login-container flexy">
+        <section className="container login-container flexy w-75">
           <div className="login-cols1">
             <h1 className="title large text-primary pt-1">Sign Up</h1>
             <p className="lead">
               <i className="fas fa-user"> Create Your Account</i>
             </p>
 
-            <Alert />
+            <Alert width="100" />
             <form className="form" onSubmit={(e) => onSubmit(e)}>
               <div className="form-group">
                 <label htmlFor="urnme" name="username" className="form-label">
@@ -152,7 +150,7 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
       </main>
       <div className="circle1"></div>
       <div className="circle2"></div>
-    </div>
+    </Fragment>
     // </Provider>
   );
 }
@@ -161,12 +159,10 @@ Signup.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  theme: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  theme: state.theme.theme,
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Signup); //!Syntax : connect(State,{actions})

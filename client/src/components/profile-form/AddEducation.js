@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { addEducation } from "../../actions/profile";
 import Alert from "../layout/Alert";
 
-const AddEducation = ({ theme, addEducation, history }) => {
+const AddEducation = ({ addEducation, history }) => {
   const [formData, setFormData] = useState({
     fieldOfStudy: "",
     school: "",
@@ -37,7 +37,7 @@ const AddEducation = ({ theme, addEducation, history }) => {
     window.scrollTo(0, 0);
   };
   return (
-    <div className={theme}>
+    <Fragment>
       <div className="hundred-perc pages">
         <h1 className="large nav-margin text-primary">Add Education</h1>
         <p className="lead">
@@ -124,19 +124,12 @@ const AddEducation = ({ theme, addEducation, history }) => {
           </div>
         </form>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
 AddEducation.propTypes = {
-  theme: PropTypes.string.isRequired,
   addEducation: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  theme: state.theme.theme,
-});
-
-export default connect(mapStateToProps, { addEducation })(
-  withRouter(AddEducation)
-);
+export default connect(null, { addEducation })(withRouter(AddEducation));

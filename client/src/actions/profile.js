@@ -36,7 +36,7 @@ export const getProfiles = () => async (dispatch) => {
     type: CLEAR_PROFILE, //* To clear out the past user's profile
   });
   try {
-    const res = await axios.get("api/profile");
+    const res = await axios.get("/api/profile");
     dispatch({
       type: GET_PROFILES,
       payload: res.data,
@@ -73,7 +73,6 @@ export const getProfileById = (userId) => async (dispatch) => {
 
 //* Get Github Repos
 export const getGithubRepos = (githubusername) => async (dispatch) => {
-
   try {
     const res = await axios.get(`/api/profile/github/${githubusername}`);
     dispatch({

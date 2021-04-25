@@ -1,5 +1,5 @@
 {
-  "name": "pythoned",
+  "name": "codecertify",
   "version": "1.0.0",
   "description": "Best Place to Learn Python",
   "main": "server.js",
@@ -10,7 +10,9 @@
     "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "keywords": [
-    "Python"
+    "Code",
+    "Certify",
+    "Code Certify"
   ],
   "author": "Loganand S",
   "license": "MIT",

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
 import { Redirect, Link } from "react-router-dom";
 import Alert from "../layout/Alert";
 
-function Login({ login, isAuthenticated, theme }) {
+function Login({ login, isAuthenticated }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -36,16 +36,16 @@ function Login({ login, isAuthenticated, theme }) {
   }
 
   return (
-    <div className={theme}>
+    <Fragment>
       <main className="hundred-perc flexy nav-margin">
-        <section className="container login-container flexy">
+        <section className="container login-container flexy w-75">
           <div className="login-cols1">
             <h1 className="title large text-primary pt-1">Login</h1>
             <p className="lead">
               <i className="fas fa-user"> Sign in to your Account</i>
             </p>
 
-            <Alert />
+            <Alert width="100" />
             <form className="form" onSubmit={(e) => onSubmit(e)}>
               <h1 className="text-success">{name && `Hello ${name}`}</h1>
               <div className="form-group">
@@ -132,19 +132,17 @@ function Login({ login, isAuthenticated, theme }) {
       </main>
       <div className="circle1"></div>
       <div className="circle2"></div>
-    </div>
+    </Fragment>
   );
 }
 
 login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  theme: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  theme: state.theme.theme,
 });
 
 export default connect(mapStateToProps, { login })(Login);

@@ -12,53 +12,48 @@ const Dashboard = ({
   getCurrentProfile,
   auth: { user },
   profile: { profile, loading },
-  theme,
   deleteAccount,
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
   return loading && profile === null ? (
-    <div className={theme}>
-      <Spinner />
-    </div>
+    <Spinner />
   ) : (
     <Fragment>
-      <div className={theme}>
-        <div className="hundred-perc pages">
-          <h1 className="large nav-margin text-primary pt-1">Dashboard</h1>
-          <p className="lead">
-            <i className="fas fa-user"></i> Welcome{" "}
-            {profile && profile.name
-              ? profile.name
-              : user && user.email && user.email}
-          </p>
-          {profile !== null ? (
-            <Fragment>
-              <DashboardActions />
-              <Experience experience={profile.experience} />
-              <Education education={profile.education} />
-              <div className="mt-2 bot-padding">
-                <button
-                  onClick={() => deleteAccount()}
-                  className="btn btn-danger"
-                >
-                  <i className="fas fa-user-minus"></i> Delete My Account
-                </button>
-              </div>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <p>
-                You have not yet created a profile. Please create a profile to
-                post your content.
-              </p>
-              <Link to="/create-profile" className="btn btn-success my-1">
-                Create Profile
-              </Link>
-            </Fragment>
-          )}
-        </div>
+      <div className="hundred-perc pages">
+        <h1 className="large nav-margin text-primary pt-1">Dashboard</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Welcome{" "}
+          {profile && profile.name
+            ? profile.name
+            : user && user.email && user.email}
+        </p>
+        {profile !== null ? (
+          <Fragment>
+            <DashboardActions />
+            <Experience experience={profile.experience} />
+            <Education education={profile.education} />
+            <div className="mt-2 bot-padding">
+              <button
+                onClick={() => deleteAccount()}
+                className="btn btn-danger"
+              >
+                <i className="fas fa-user-minus"></i> Delete My Account
+              </button>
+            </div>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <p>
+              You have not yet created a profile. Please create a profile to
+              post your content.
+            </p>
+            <Link to="/create-profile" className="btn btn-success my-1">
+              Create Profile
+            </Link>
+          </Fragment>
+        )}
       </div>
     </Fragment>
   );
@@ -75,7 +70,6 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     profile: state.profile,
-    theme: state.theme.theme,
   };
 };
 

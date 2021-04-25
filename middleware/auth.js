@@ -6,7 +6,7 @@ module.exports = function (req, res, next) {
   //* Get Token from Header. Need to send the token within the header when accessing protected routes.
   const token = req.header("x-auth-token"); //"x-auth-token" is the header Key where we would send the token in.
 
-  //* Check if no Token
+  //* Check if no Token present
   if (!token) {
     return res.status(401).json({ msg: "No Token, Authorization Denied" });
   }

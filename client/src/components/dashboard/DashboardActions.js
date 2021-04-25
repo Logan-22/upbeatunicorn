@@ -1,12 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Alert from "../layout/Alert";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
-const DashboardActions = ({ theme }) => {
+const DashboardActions = () => {
   return (
-    <div className={theme}>
+    <Fragment>
       <Alert />
       <div className="dash-buttons">
         <Link to="/edit-profile" className="btn btn-light dash-links">
@@ -22,16 +20,8 @@ const DashboardActions = ({ theme }) => {
           <span className="text-primary p-1"> Add Education</span>
         </Link>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
-DashboardActions.propTypes = {
-  theme: PropTypes.string.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  theme: state.theme.theme,
-});
-
-export default connect(mapStateToProps)(DashboardActions);
+export default DashboardActions;

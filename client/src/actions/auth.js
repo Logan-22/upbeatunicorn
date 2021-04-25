@@ -21,7 +21,7 @@ export const loadUser = () => async (dispatch) => {
     setAuthToken(localStorage.token);
   }
   try {
-    const res = await axios.get("/api/auth");
+    const res = await axios.get("http://localhost:5000/api/auth");
     dispatch({
       type: USER_LOADED,
       payload: res.data, //* User is returned from api/auth backend

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
 import { deleteExperience } from "../../actions/profile";
 
-const Experience = ({ experience, theme, deleteExperience }) => {
+const Experience = ({ experience, deleteExperience }) => {
   const experiences = experience.map((exp) => (
     <tr key={exp._id}>
       <td>{exp.company}</td>
@@ -28,31 +28,30 @@ const Experience = ({ experience, theme, deleteExperience }) => {
     </tr>
   ));
   return (
-    <div className={theme}>
-      <h2 className="my-2">Experience Credentials</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th className="hide-sm">Title</th>
-            <th className="hide-sm">Years</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>{experiences}</tbody>
-      </table>
-    </div>
+    <Fragment>
+      <h2 className="my-2 text-primary">Experience Credentials</h2>
+      {experience.length === 0 ? (
+        <h4 className="light-workaround">No Experience Credentials Recorded</h4>
+      ) : (
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th className="hide-sm">Title</th>
+              <th className="hide-sm">Years</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>{experiences}</tbody>
+        </table>
+      )}
+    </Fragment>
   );
 };
 
 Experience.propTypes = {
-  theme: PropTypes.string.isRequired,
   experience: PropTypes.array.isRequired,
   deleteExperience: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  theme: state.theme.theme,
-});
-
-export default connect(mapStateToProps, { deleteExperience })(Experience);
+export default connect(null, { deleteExperience })(Experience);

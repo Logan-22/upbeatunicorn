@@ -24,6 +24,7 @@
   input[type="submit"] {
     padding: 0.75rem;
     font-weight: bold;
+    font: inherit;
   }
 }
 
@@ -35,7 +36,6 @@
   select,
   textarea {
     display: block;
-    width: 75%;
     padding: 0.5rem;
     font-size: 1.2rem;
     border: solid 1px $primary-color;
@@ -44,5 +44,42 @@
   input[type="submit"] {
     padding: 0.75rem;
     font-weight: bold;
+    font: inherit;
+  }
+}
+.code-edit-form {
+  input[type="submit"] {
+    padding: 0.75rem;
+    font-weight: bold;
+    font: inherit;
+  }
+}
+
+.comment-edit-form {
+  &-group {
+    margin: 1.5rem 0 0 0;
+  }
+  &-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"],
+  select,
+  textarea {
+    display: block;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: solid 1px $primary-color;
+    background-color: $light-color;
+    font: inherit;
+  }
+  input[type="submit"] {
+    padding: 0.75rem;
+    font-weight: bold;
+    font: inherit;
   }
 }

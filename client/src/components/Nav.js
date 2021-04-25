@@ -5,24 +5,33 @@ import PropTypes from "prop-types";
 import { logout } from "../actions/auth";
 import { setTheme } from "../actions/theme";
 
-function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
+function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
   const [mode, setMode] = useState(localStorage.getItem("darkmode") === "true");
 
   const authLinks = (
     <ul>
       <li>
         <Link className="nav-item" to="/dashboard">
-          <i className="fas fa-chalkboard"></i> Dashboard
+          <i className="fas fa-chalkboard"></i>
+          <span className="hide-sm"> Dashboard</span>
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/profiles">
-          <i className="fas fa-users"></i> Profiles
+          <i className="fas fa-users"></i>
+          <span className="hide-sm"> Profiles</span>
+        </Link>
+      </li>
+      <li>
+        <Link className="nav-item" to="/posts">
+          <i className="fas fa-laptop-code"></i>
+          <span className="hide-sm"> Posts</span>
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/login" onClick={logout}>
-          <i className="fas fa-sign-out-alt"></i> Logout
+          <i className="fas fa-sign-out-alt"></i>
+          <span className="hide-sm"> Logout</span>
         </Link>
       </li>
     </ul>
@@ -31,27 +40,32 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
     <ul className="nav-list">
       <li>
         <Link className="nav-item" to="/">
-          <i className="fas fa-home"></i> Home
+          <i className="fas fa-home"></i>
+          <span className="hide-sm"> Home</span>
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/dashboard">
-          <i className="fas fa-chalkboard"></i> Dashboard
+          <i className="fas fa-chalkboard"></i>
+          <span className="hide-sm"> Dashboard</span>
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/profiles">
-          <i className="fas fa-users"></i> Profiles
+          <i className="fas fa-users"></i>
+          <span className="hide-sm"> Profiles</span>
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/signup">
-          <i className="fas fa-user-plus"></i> Signup
+          <i className="fas fa-user-plus"></i>
+          <span className="hide-sm"> Signup</span>
         </Link>
       </li>
       <li>
         <Link className="nav-item" to="/login">
-          <i className="fas fa-sign-in-alt"></i> Login
+          <i className="fas fa-sign-in-alt"></i>
+          <span className="hide-sm"> Login</span>
         </Link>
       </li>
     </ul>
@@ -78,7 +92,7 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
   }
 
   return (
-    <div className={theme}>
+    <div className="mob-nav">
       <nav className="navbar">
         <h1 className="brand">
           <Link to="/" className="nav-item">
@@ -87,7 +101,10 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
         </h1>
         <ul className="nav-list">
           <li className="slider">
-            <strong>Light</strong>
+            <strong>
+              <i className="fas fa-sun"></i>{" "}
+              <span className="hide-sm">Light</span>
+            </strong>
             <input
               type="checkbox"
               id="dynamicCheck"
@@ -95,7 +112,10 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
               onChange={handleCheck}
             />
             <label htmlFor="dynamicCheck" className="toggle"></label>
-            <strong>Dark</strong>
+            <strong className="drk">
+              <i className="fas fa-moon"></i>{" "}
+              <span className="hide-sm">Dark</span>
+            </strong>
           </li>
           {!loading && (
             <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
@@ -114,13 +134,11 @@ function Nav({ logout, auth: { isAuthenticated, loading }, theme, setTheme }) {
 Nav.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  theme: PropTypes.string.isRequired,
   setTheme: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  theme: state.theme.theme,
 });
 
 // const mapDispatchToProps = (dispatch) => ({

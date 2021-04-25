@@ -146,7 +146,6 @@
 //* Alerts
 
 .alert {
-  width: 75%;
   padding: 0.5rem 0.2rem;
   margin: 0.5rem 0;
   opacity: 0.9;
@@ -265,4 +264,26 @@
 }
 .pad-half-bottom {
   padding-bottom: 0.5rem;
+}
+
+//* Tables
+
+.table {
+  width: 90%;
+  th,
+  td {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+
+.disp-none {
+  display: none;
+}
+
+.w-75 {
+  width: 75%;
+}
+.w-100 {
+  width: 100%;
 }

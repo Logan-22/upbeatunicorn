@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -37,7 +37,7 @@ function LandingPage({ isAuthenticated, theme }) {
     }
   }
   return (
-    <div className={theme}>
+    <Fragment>
       <div className="landing">
         <div
           className="landing-container"
@@ -67,7 +67,7 @@ function LandingPage({ isAuthenticated, theme }) {
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 }
 
@@ -77,7 +77,6 @@ LandingPage.propTypes = {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  theme: state.theme.theme,
 });
 
 export default connect(mapStateToProps)(LandingPage);
