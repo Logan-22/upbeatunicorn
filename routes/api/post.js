@@ -12,21 +12,51 @@ const Post = require("../../models/Post");
 
 router.post(
   "/",
-  [auth, [check("text", "Post is Required").not().isEmpty()]],
+  [
+    auth,
+    [
+      check("question", "Question is Required").not().isEmpty(),
+      check("optionsType", "Please Select Options Type").not().isEmpty(),
+      check("options", "Please provide atleast two options").isLength({
+        min: 2
+      })
+    ]
+  ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    const {
+      question,
+      codeText,
+      codeType,
+      optionsType,
+      options,
+      rating,
+      explanation
+    } = req.body;
+
+    const postFields = {};
+
+    postFields.user = req.user.id;
+
+    postFields.content = {};
+    if (question) postFields.content.question = question;
+    if (codeText) postFields.content.codeText = codeText;
+    if (codeType) postFields.content.codeType = codeType;
+    if (optionsType) postFields.content.optionsType = optionsType;
+    if (options) postFields.content.options = options;
+    if (explanation) postFields.content.explanation = explanation;
+    if (rating) postFields.content.rating = rating;
+
     try {
       const user = await User.findById(req.user.id).select("-password");
       const profile = await Profile.findOne({ user: req.user.id });
-      const newPost = new Post({
-        text: req.body.text,
-        name: profile.name,
-        avatar: user.avatar,
-        user: req.user.id,
-      });
+      postFields.name = profile.name;
+      postFields.avatar = user.avatar;
+
+      const newPost = new Post(postFields);
       const post = await newPost.save();
       return res.json(post);
     } catch (err) {
@@ -187,7 +217,7 @@ router.post(
         text: req.body.text,
         name: profile.name,
         avatar: user.avatar,
-        user: req.user.id,
+        user: req.user.id
       };
       post.comments.unshift(newComment);
       await post.save();

@@ -7,11 +7,19 @@ import PostItem from "../posts/PostItem";
 import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
+import Prism from "prismjs";
+import "../../dist/css/prism.css";
+import "../../utils/prism-utils/prism-python";
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
   }, [getPost, match.params.id]);
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
+
   return (
     <Fragment>
       {loading || post === null ? (
@@ -41,11 +49,11 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
 Post.propTypes = {
   getPost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  post: state.post,
+  post: state.post
 });
 
 export default connect(mapStateToProps, { getPost })(Post);

@@ -47,15 +47,8 @@
     font: inherit;
   }
 }
-.code-edit-form {
-  input[type="submit"] {
-    padding: 0.75rem;
-    font-weight: bold;
-    font: inherit;
-  }
-}
 
-.comment-edit-form {
+.form-important {
   &-group {
     margin: 1.5rem 0 0 0;
   }
@@ -69,7 +62,7 @@
   input[type="password"],
   input[type="date"],
   select,
-  textarea {
+  textarea[id*="txtarea-"] {
     display: block;
     padding: 0.5rem;
     font-size: 1.2rem;
@@ -82,4 +75,15 @@
     font-weight: bold;
     font: inherit;
   }
+}
+
+.optionCorrect {
+  width: 15px;
+  height: 15px;
+  display: block;
+  margin: 0 auto;
+}
+.options {
+  width: 20px;
+  height: 20px;
 }

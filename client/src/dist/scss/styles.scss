@@ -2,6 +2,7 @@
 @import "utilities";
 @import "form";
 @import "codeeditor";
+@import "option";
 
 * {
   box-sizing: border-box;
@@ -176,6 +177,14 @@ body {
     font-size: 0.9rem;
   }
   //* Prism Default Theme
+
+  .prewrap {
+    //* Just a placeholder parent class
+    :not(pre) > code[class*="language-"],
+    pre[class*="language-"] {
+      background: #f5f2f0;
+    }
+  }
 
   code[class*="language-"],
   pre[class*="language-"] {
@@ -430,6 +439,14 @@ body {
     font-size: 0.9rem;
   }
   //* Prism Theme Okadia
+
+  .prewrap {
+    //* Just a placeholder parent class
+    :not(pre) > code[class*="language-"],
+    pre[class*="language-"] {
+      background: #272822;
+    }
+  }
 
   code[class*="language-"],
   pre[class*="language-"] {
@@ -834,6 +851,13 @@ ul {
 }
 .profile-link {
   text-decoration: none;
+}
+
+.dfstart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 //* Mobile

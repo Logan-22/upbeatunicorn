@@ -1,11 +1,11 @@
 import { v4 as uuid } from "uuid";
 import { SET_ALERT, REMOVE_ALERT } from "./types";
 
-export const setAlert = (msg, alertType) => (dispatch) => {
+export const setAlert = (msg, alertType, timeOut = 3000) => (dispatch) => {
   const id = uuid();
   dispatch({
     type: SET_ALERT,
-    payload: { msg, alertType, id },
+    payload: { msg, alertType, id }
   });
-  setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), 3000);
+  setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), timeOut);
 }; // Async Request in Action is possible with Thunk middleware , where the action creator can return a function and perform side effects.

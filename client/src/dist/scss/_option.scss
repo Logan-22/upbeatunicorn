@@ -1,0 +1,39 @@
+.light {
+  .option {
+    border: 1px solid $primary-color;
+    background-color: lighten($light-color, 3%);
+    p {
+      color: $semi-dark-color;
+    }
+    &-checked {
+      background-color: lighten($primary-color, 3%) !important;
+    }
+    &-correct {
+      background-color: lighten($success-color, 3%) !important;
+    }
+    &-wrong {
+      background-color: lighten($danger-color, 3%) !important;
+    }
+  }
+}
+.dark {
+  .option {
+    border: 1px solid $primary-color;
+    background-color: $semi-dark-color;
+    p {
+      color: $light-color;
+    }
+    input[type="checkbox"]:checked {
+      background-color: $success-color;
+    }
+    &-checked {
+      background-color: lighten($primary-color, 3%) !important;
+    }
+    &-correct {
+      background-color: lighten($success-color, 3%) !important;
+    }
+    &-wrong {
+      background-color: lighten($danger-color, 3%) !important;
+    }
+  }
+}
