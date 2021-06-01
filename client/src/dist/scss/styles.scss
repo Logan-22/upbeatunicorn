@@ -3,6 +3,7 @@
 @import "form";
 @import "codeeditor";
 @import "option";
+@import "questions";
 
 * {
   box-sizing: border-box;
@@ -175,6 +176,12 @@ body {
   .post-date {
     color: $semi-dark-color;
     font-size: 0.9rem;
+  }
+  .text-from-array {
+    color: $semi-dark-color;
+  }
+  .question {
+    background-color: $light-color;
   }
   //* Prism Default Theme
 
@@ -437,6 +444,9 @@ body {
   .post-date {
     color: $light-color;
     font-size: 0.9rem;
+  }
+  .text-from-array {
+    color: $light-color;
   }
   //* Prism Theme Okadia
 
@@ -858,6 +868,73 @@ ul {
   justify-content: flex-start;
   align-items: center;
   text-align: center;
+}
+
+//* Line
+
+.line {
+  height: 2px;
+
+  margin: 1.5rem 0;
+}
+
+//*Flex Box
+
+.flexy {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pad-half {
+  padding: 0.5rem 0.5rem;
+}
+
+.padx-half-pady-one {
+  padding: 1rem 0.4rem;
+}
+
+.fsize-half {
+  font-size: 0.85rem;
+}
+
+.nav-margin {
+  margin-top: 10vh;
+}
+
+.bot-padding {
+  padding-bottom: 1rem;
+}
+
+.round-img {
+  border-radius: 50%;
+}
+.pad-half {
+  padding: 0.5rem;
+}
+.pad-half-bottom {
+  padding-bottom: 0.5rem;
+}
+
+.disp-none {
+  display: none;
+}
+.w-75 {
+  width: 75%;
+}
+.w-100 {
+  width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+.prewrap {
+  white-space: pre-wrap;
+}
+.flexc {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 //* Mobile

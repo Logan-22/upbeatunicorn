@@ -15,11 +15,9 @@ router.post(
   [
     auth,
     [
+      check("title", "Title is Required").not().isEmpty(),
       check("question", "Question is Required").not().isEmpty(),
-      check("optionsType", "Please Select Options Type").not().isEmpty(),
-      check("options", "Please provide atleast two options").isLength({
-        min: 2
-      })
+      check("optionsType", "Please Select Options Type").not().isEmpty()
     ]
   ],
   async (req, res) => {
@@ -28,6 +26,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const {
+      title,
       question,
       codeText,
       codeType,
@@ -42,13 +41,15 @@ router.post(
     postFields.user = req.user.id;
 
     postFields.content = {};
+    if (title) postFields.content.title = title;
     if (question) postFields.content.question = question;
     if (codeText) postFields.content.codeText = codeText;
     if (codeType) postFields.content.codeType = codeType;
     if (optionsType) postFields.content.optionsType = optionsType;
     if (options) postFields.content.options = options;
     if (explanation) postFields.content.explanation = explanation;
-    if (rating) postFields.content.rating = rating;
+    postFields.ratings = {};
+    if (rating) postFields.ratings.push({ user: req.user.id, rating });
 
     try {
       const user = await User.findById(req.user.id).select("-password");
@@ -80,6 +81,24 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+//* @route  GET api/post/:codeType
+//* @desc   Get all posts from a particular code type
+//* @access Private
+
+router.get("/codeType/:codeType", auth, async (req, res) => {
+  try {
+    const posts = await Post.find({
+      "content.codeType": req.params.codeType
+    }).sort({
+      date: -1
+    });
+    return res.json(posts);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send("Server Error");
+  }
+});
+
 //* @route  GET api/post/:id
 //* @desc   Get post by Id
 //* @access Private
@@ -87,10 +106,82 @@ router.get("/", auth, async (req, res) => {
 router.get("/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+
+    const user = await User.findById(req.user.id);
+
+    if (
+      user.visited.filter((ele) => ele.qid.toString() === req.params.id)
+        .length === 0
+    ) {
+      user.visited.unshift({ qid: req.params.id });
+      await user.save();
+    }
+
     if (!post) {
       return res.status(404).json({ msg: "Post Not Found" });
     }
+    console.log(user);
     return res.json(post);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({ msg: "Post Not Found" });
+    }
+    return res.status(500).send("Server Error");
+  }
+});
+
+//* @route  PUT api/post/answer/:answerStatus/:id
+//* @desc   Mark post as answered Correct/Wrong
+//* @access Private
+
+router.put("/answer/:answerStatus/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    const user = await User.findById(req.user.id);
+
+    if (req.params.answerStatus === "correct") {
+      if (
+        user.answeredWrong.filter((ele) => ele.qid.toString() === req.params.id)
+          .length >= 0
+      ) {
+        user.answeredWrong = user.answeredWrong.filter(
+          (ele) => ele.qid.toString() !== req.params.id
+        );
+      }
+      if (
+        user.answeredCorrectly.filter(
+          (ele) => ele.qid.toString() === req.params.id
+        ).length === 0
+      ) {
+        user.answeredCorrectly.unshift({ qid: req.params.id });
+        await user.save();
+      }
+    } else {
+      if (
+        user.answeredCorrectly.filter(
+          (ele) => ele.qid.toString() === req.params.id
+        ).length >= 0
+      ) {
+        user.answeredCorrectly = user.answeredWrong.filter(
+          (ele) => ele.qid.toString() !== req.params.id
+        );
+      }
+      if (
+        user.answeredWrong.filter((ele) => ele.qid.toString() === req.params.id)
+          .length === 0
+      ) {
+        user.answeredWrong.unshift({ qid: req.params.id });
+        await user.save();
+      }
+    }
+
+    if (!post) {
+      return res.status(404).json({ msg: "Post Not Found" });
+    }
+    console.log(user);
+    return res.json(user);
   } catch (err) {
     console.error(err.message);
     if (err.kind === "ObjectId") {
@@ -272,4 +363,39 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
     return res.status(500).send("Server Error");
   }
 });
+
+//* @route  POST api/post/rating/:id
+//* @desc   Rate a Post
+//* @access Private
+
+router.put("/rating/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    console.log("inside ratign");
+    console.log(post);
+    const { rating } = req.body;
+
+    //*Check if the user already rated this post
+
+    if (
+      post.ratings.filter((r) => r.user.toString() === req.user.id).length > 0
+    ) {
+      return res.status(400).json({ msg: "Post Already Rated" });
+    }
+    if (!post) {
+      return res.status(404).json({ msg: "Post Not Found" });
+    }
+    console.log(post);
+    post.ratings.push({ user: req.user.id, rating });
+    await post.save();
+    return res.json(post.ratings);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({ msg: "Post Not Found" });
+    }
+    return res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;

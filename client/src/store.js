@@ -11,6 +11,6 @@ const store = createStore(
   rootReducer,
   initialState,
   composeWithDevTools(applyMiddleware(...middleware))
-); // Create Globalized State Store with reducers , initial State and hook it up to Redux Dev Tools in browser.
+); //* Create Globalized State Store with reducers , initial State and hook it up to Redux Dev Tools in browser.
 
 export default store;

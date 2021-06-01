@@ -12,6 +12,7 @@ import StarRatings from "react-star-ratings";
 
 const PostForm = ({ addPost, setAlert }) => {
   const [content, setContent] = useState({
+    title: "",
     question: "",
     codeText: "",
     codeType: "",
@@ -21,6 +22,7 @@ const PostForm = ({ addPost, setAlert }) => {
     rating: 0
   });
   const {
+    title,
     question,
     codeText,
     codeType,
@@ -75,6 +77,7 @@ const PostForm = ({ addPost, setAlert }) => {
           addPost(content);
           window.scroll(0, 0);
           setContent({
+            title: "",
             question: "",
             codeText: "",
             codeType: "",
@@ -89,13 +92,30 @@ const PostForm = ({ addPost, setAlert }) => {
         <div className="post-form-header bg-primary w-75">
           <h3>Post your Question!</h3>
         </div>
-        <div className="question my-1">
+        <div className="my-1">
           <strong>
-            <label htmlFor="txtarea">Enter your question*</label>
+            <label htmlFor="txtarea">
+              Enter a Tile for your Question<sup>*</sup>
+            </label>
           </strong>
           <textarea
-            placeholder="Enter your Question here*"
+            placeholder={`Enter your Title here${(<sup>*</sup>)}`}
             id="txtarea-1"
+            className="w-75"
+            name="title"
+            value={title}
+            onChange={(e) => handleChange(e)}
+          >
+            {question}
+          </textarea>
+          <strong>
+            <label htmlFor="txtarea">
+              Enter your question<sup>*</sup>
+            </label>
+          </strong>
+          <textarea
+            placeholder={`Enter your Question here${(<sup>*</sup>)}`}
+            id="txtarea-2"
             className="w-75"
             name="question"
             value={question}

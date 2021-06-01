@@ -21,6 +21,15 @@
     @include set-background-color(white);
     border: $semi-dark-color 1px solid;
   }
+  &-easy {
+    background-color: $easy-color;
+  }
+  &-medium {
+    background-color: $medium-color;
+  }
+  &-hard {
+    background-color: $hard-color;
+  }
 }
 
 //*Text
@@ -141,6 +150,15 @@
   &-instagram {
     color: $instagram-color;
   }
+  &-easy {
+    color: $easy-color;
+  }
+  &-medium {
+    color: $medium-color;
+  }
+  &-hard {
+    color: $hard-color;
+  }
 }
 
 //* Alerts
@@ -164,6 +182,18 @@
   &-danger {
     @include set-background-color($danger-color);
   }
+}
+
+//*Bg
+
+.easy {
+  background-color: $easy-color;
+}
+.medium {
+  background-color: $medium-color;
+}
+.hard {
+  background-color: $hard-color;
 }
 
 //* Text Color of Social Medias
@@ -220,52 +250,6 @@
   }
 }
 
-//* Line
-
-.line {
-  height: 2px;
-
-  margin: 1.5rem 0;
-}
-
-//*Flex Box
-
-.flexy {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.pad-half {
-  padding: 0.5rem 0.5rem;
-}
-
-.padx-half-pady-one {
-  padding: 1rem 0.4rem;
-}
-
-.fsize-half {
-  font-size: 0.85rem;
-}
-
-.nav-margin {
-  margin-top: 10vh;
-}
-
-.bot-padding {
-  padding-bottom: 1rem;
-}
-
-.round-img {
-  border-radius: 50%;
-}
-.pad-half {
-  padding: 0.5rem;
-}
-.pad-half-bottom {
-  padding-bottom: 0.5rem;
-}
-
 //* Tables
 
 .table {
@@ -277,24 +261,24 @@
   }
 }
 
-.disp-none {
-  display: none;
+//* Strings
+
+.capitalize::first-letter {
+  text-transform: capitalize;
 }
 
-.w-75 {
-  width: 75%;
+//* Randoms
+
+.tdn {
+  text-decoration: none;
 }
-.w-100 {
-  width: 100%;
+.tac {
+  text-align: center !important;
 }
-.w-50 {
-  width: 50%;
+
+.br1 {
+  border-radius: 1rem;
 }
-.prewrap {
-  white-space: pre-wrap;
-}
-.flexc {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+.w-10 {
+  width: 2rem;
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -7,6 +7,11 @@ import { setTheme } from "../actions/theme";
 
 function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
   const [mode, setMode] = useState(localStorage.getItem("darkmode") === "true");
+  // const [color, setColor] = useState("");
+
+  useEffect(() => {
+    setTheme(mode);
+  }, [mode, setTheme]);
 
   const authLinks = (
     <ul>
@@ -19,7 +24,7 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
       <li>
         <Link className="nav-item" to="/profiles">
           <i className="fas fa-users"></i>
-          <span className="hide-sm"> Profiles</span>
+          <span className="hide-sm"> Contributors</span>
         </Link>
       </li>
       <li>
@@ -53,7 +58,7 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
       <li>
         <Link className="nav-item" to="/profiles">
           <i className="fas fa-users"></i>
-          <span className="hide-sm"> Profiles</span>
+          <span className="hide-sm"> Contributors</span>
         </Link>
       </li>
       <li>
@@ -86,10 +91,6 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
   //     burgerClass.classList.toggle("toggle");
   //   });
   // }
-  function handleCheck() {
-    setTheme(!mode);
-    setMode(!mode);
-  }
 
   return (
     <div className="mob-nav">
@@ -109,7 +110,7 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
               type="checkbox"
               id="dynamicCheck"
               className="checkbox"
-              onChange={handleCheck}
+              onChange={() => setMode(!mode)}
             />
             <label htmlFor="dynamicCheck" className="toggle"></label>
             <strong className="drk">
@@ -117,6 +118,14 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
               <span className="hide-sm">Dark</span>
             </strong>
           </li>
+          {/* <li>
+            <input
+              type="color"
+              className="color-picker"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </li> */}
           {!loading && (
             <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
           )}
@@ -134,11 +143,11 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
 Nav.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  setTheme: PropTypes.func.isRequired,
+  setTheme: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.auth
 });
 
 // const mapDispatchToProps = (dispatch) => ({
@@ -148,5 +157,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   logout,
-  setTheme: (mode) => setTheme(mode),
+  setTheme: (mode) => setTheme(mode)
 })(Nav);

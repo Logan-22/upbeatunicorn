@@ -8,12 +8,31 @@ import {
   GET_POST,
   GET_POSTS,
   POST_ERROR,
-  UPDATE_LIKES
+  UPDATE_LIKES,
+  USER_LOADED,
+  LOAD_RATING
 } from "./types";
 
 export const getPosts = () => async (dispatch) => {
   try {
     const res = await axios.get("http://localhost:5000/api/post");
+    dispatch({
+      type: GET_POSTS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+export const getPostsByCodeType = (codeType) => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      `http://localhost:5000/api/post/codeType/${codeType}`
+    );
     dispatch({
       type: GET_POSTS,
       payload: res.data
@@ -151,6 +170,49 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
       payload: commentId
     });
     dispatch(setAlert("Comment Deleted", "success"));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+export const markUser = (postId, answerStatus) => async (dispatch) => {
+  try {
+    const res = await axios.put(
+      `http://localhost:5000/api/post/answer/    ${answerStatus}/${postId}`
+    );
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+export const markRating = (postId, formData) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    console.log(postId, formData, "Middle Action");
+    const res = await axios.put(
+      `http://localhost:5000/api/post/rating/${postId}`,
+      formData,
+      config
+    );
+    console.log(res.data);
+    dispatch({
+      type: LOAD_RATING,
+      payload: res.data
+    });
   } catch (err) {
     dispatch({
       type: POST_ERROR,
