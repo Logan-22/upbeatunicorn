@@ -71,8 +71,9 @@ const EditProfile = ({
 
   return (
     <Fragment>
-      <div className="hundred-perc pages">
-        <h1 className="large nav-margin text-primary pt-1">
+      <div className="ml-3 dashboard-grid">
+        <div className="dash w-75">
+        <h1 className="large text-primary pt-1">
           Edit Your Profile
         </h1>
         <p className="lead">
@@ -230,6 +231,8 @@ const EditProfile = ({
             <i class="fas fa-backward"></i> Go Back
           </Link>
         </form>
+        </div>
+        <advert className="advert"></advert>
       </div>
     </Fragment>
   );

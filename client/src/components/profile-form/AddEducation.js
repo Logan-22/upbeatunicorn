@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState,Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -38,8 +38,9 @@ const AddEducation = ({ addEducation, history }) => {
   };
   return (
     <Fragment>
-      <div className="hundred-perc pages">
-        <h1 className="large nav-margin text-primary">Add Education</h1>
+      <div className="ml-3 dashboard-grid">
+        <div className="dash w-75">
+        <h1 className="large text-primary pt-1">Add Education</h1>
         <p className="lead">
           <i class="fas fa-user-graduate"></i> Add your education here.
         </p>
@@ -117,13 +118,15 @@ const AddEducation = ({ addEducation, history }) => {
                 name="description"
               ></textarea>
             </div>
-            <input type="submit" className="btn btn-primary my-1" />
+            <input type="submit" className="btn btn-primary " />
             <Link to="/dashboard" className="btn btn-dark m-1">
               <i class="fas fa-backward"></i> Go Back
             </Link>
           </div>
         </form>
       </div>
+      <advert className="advert"></advert>
+      </div>    
     </Fragment>
   );
 };

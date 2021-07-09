@@ -4,8 +4,6 @@ import LandingPage from "./components/LandingPage";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import Footer from "./components/Footer";
-
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import CreateProfile from "./components/profile-form/CreateProfile";
@@ -17,6 +15,7 @@ import Profile from "./components/profile/Profile";
 import Spinner from "./components/layout/Spinner";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
+import PostForm from "./components/posts/PostForm";
 import { connect } from "react-redux";
 
 function Collection({ theme }) {
@@ -28,7 +27,9 @@ function Collection({ theme }) {
   return (
     <Router>
       <div className={theme}>
+        <div className="main-grid">
         <Nav />
+        <div>
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={Login} />
@@ -49,11 +50,16 @@ function Collection({ theme }) {
             component={AddExperience}
           />
           <PrivateRoute exact path="/add-education" component={AddEducation} />
-
+          <PrivateRoute
+            exact
+            path="/add-post"
+            component={PostForm}
+          />
           <PrivateRoute exact path="/posts" component={Posts} />
           <PrivateRoute exact path="/posts/:id" component={Post} />
         </Switch>
-        {/* <Footer /> */}
+        </div>
+        </div>
       </div>
     </Router>
   );

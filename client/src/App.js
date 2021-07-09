@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Collection from "./Collection";
+import Grid from "./Grid";
 import { Provider } from "react-redux"; //*Provider connects the react and redux parts.
 import store from "./store";
 import { loadTheme } from "./actions/theme";
@@ -19,7 +19,7 @@ const App = () => {
   }, []); //* [] -> Represent the useEffect hook is run onMount of each component..
   return (
     <Provider store={store}>
-      <Collection />
+      <Grid />
     </Provider>
   );
 };

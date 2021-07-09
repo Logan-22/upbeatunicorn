@@ -97,6 +97,16 @@ $measurements: (1, 2, 3, 4, 5);
   }
 }
 
+.p-05{
+  padding:0.5rem;
+}
+.m-05{
+  margin:0.5rem;
+}
+.my-05{
+  margin:0.5rem 0;
+}
+
 $heights: (75, 80, 85, 90, 95, 100);
 @each $height in $heights {
   //*Heights

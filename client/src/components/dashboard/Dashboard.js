@@ -17,12 +17,13 @@ const Dashboard = ({
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
-  return loading && profile === null ? (
+  return loading === true ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <div className="hundred-perc pages">
-        <h1 className="large nav-margin text-primary pt-1">Dashboard</h1>
+    <>
+      <div className="ml-3 dashboard-grid">
+      <div className="dash">
+        <h1 className="large text-primary pt-1">Dashboard</h1>
         <p className="lead">
           <i className="fas fa-user"></i> Welcome{" "}
           {profile && profile.name
@@ -30,7 +31,7 @@ const Dashboard = ({
             : user && user.email && user.email}
         </p>
         {profile !== null ? (
-          <Fragment>
+          <>
             <DashboardActions />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
@@ -42,9 +43,9 @@ const Dashboard = ({
                 <i className="fas fa-user-minus"></i> Delete My Account
               </button>
             </div>
-          </Fragment>
+          </>
         ) : (
-          <Fragment>
+          <>
             <p>
               You have not yet created a profile. Please create a profile to
               post your content.
@@ -52,10 +53,12 @@ const Dashboard = ({
             <Link to="/create-profile" className="btn btn-success my-1">
               Create Profile
             </Link>
-          </Fragment>
+          </>
         )}
+        </div>
+        <advert className="advert"></advert>
       </div>
-    </Fragment>
+    </>
   );
 };
 

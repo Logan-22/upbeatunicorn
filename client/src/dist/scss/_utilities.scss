@@ -62,8 +62,9 @@
   margin-right: 0.5rem;
   outline: none;
   text-decoration: none;
-  transition: all 0.2 ease;
+  transition: all 0.3s ease;
   border-radius: 30px;
+  font-family: inherit;
   &.btn-primary {
     @include set-background-color($primary-color);
     &:hover {
@@ -281,4 +282,6 @@
 }
 .w-10 {
   width: 2rem;
+}.mr-2{
+  margin-right:2rem;
 }

@@ -31,7 +31,7 @@ export const getPosts = () => async (dispatch) => {
 export const getPostsByCodeType = (codeType) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://localhost:5000/api/post/codeType/${codeType}`
+      `http://localhost:5000/api/post?codeType=${codeType}`
     );
     dispatch({
       type: GET_POSTS,
@@ -111,7 +111,10 @@ export const addPost = (formData) => async (dispatch) => {
       type: ADD_POST,
       payload: res.data
     });
+    console.log("Inside Action");
     dispatch(setAlert("Post Added", "success"));
+    console.log("Outside Action");
+
   } catch (err) {
     dispatch({
       type: POST_ERROR,

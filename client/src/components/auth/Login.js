@@ -37,7 +37,7 @@ function Login({ login, isAuthenticated }) {
 
   return (
     <Fragment>
-      <main className="hundred-perc flexy nav-margin">
+      <main className="flexy m-1">
         <section className="container login-container flexy w-75">
           <div className="login-cols1">
             <h1 className="title large text-primary pt-1">Login</h1>
@@ -96,8 +96,39 @@ function Login({ login, isAuthenticated }) {
             </p>
           </div>
           <div className="login-cols2">
-            <p className="lead">
-              <i className="fa fa-refresh text-primary">
+            <p className="lead size-sm">
+              <i className="fa fa-refresh text-dark">
+                <strong> Alternate Options</strong>
+              </i>
+            </p>
+              <div className="my-05">
+                <Link to="/spinner" type="submit" className="btn btn-google">
+                  <div className="p-1 fo-1">
+                    <i className="fab fa-google"></i>
+                    <strong> Sign Up With Google</strong>
+                  </div>
+                </Link>
+              </div>
+              <div className="my-05">
+                <Link to="/spinner" type="submit" className="btn btn-facebook">
+                  <div className="padx-half-pady-one fo-1">
+                    <i className="fab fa-facebook"></i>
+                    <strong> Sign Up With Facebook</strong>
+                  </div>
+                </Link>
+              </div>
+              <div className="my-05">
+                <Link to="/spinner" type="submit" className="btn btn-github">
+                  <div className="p-1 fo-1">
+                    <i className="fab fa-github"></i>
+                    <strong> Sign Up With Github</strong>
+                  </div>
+                </Link>
+              </div>
+          </div>
+          {/* <div className="login-cols2">
+            <p className="lead size-sm">
+              <i className="fa fa-refresh text-dark">
                 <strong> Alternate Options</strong>
               </i>
             </p>
@@ -127,7 +158,7 @@ function Login({ login, isAuthenticated }) {
                 </button>
               </div>
             </form>
-          </div>
+          </div> */}
         </section>
       </main>
       <div className="circle1"></div>

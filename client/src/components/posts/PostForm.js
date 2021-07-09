@@ -70,11 +70,14 @@ const PostForm = ({ addPost, setAlert }) => {
   };
 
   return (
-    <div className="post-form">
+    <div className="post-form my-5">
+      <Alert/>
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          console.log("Inside JSX")
           addPost(content);
+          console.log("Outside JSX")
           window.scroll(0, 0);
           setContent({
             title: "",
@@ -94,12 +97,13 @@ const PostForm = ({ addPost, setAlert }) => {
         </div>
         <div className="my-1">
           <strong>
-            <label htmlFor="txtarea">
-              Enter a Tile for your Question<sup>*</sup>
+            <label htmlFor="txtarea-1">
+              Enter a Title for your Question <sup>*</sup>
             </label>
           </strong>
+          
           <textarea
-            placeholder={`Enter your Title here${(<sup>*</sup>)}`}
+            placeholder="Enter your Title here"
             id="txtarea-1"
             className="w-75"
             name="title"
@@ -109,12 +113,32 @@ const PostForm = ({ addPost, setAlert }) => {
             {question}
           </textarea>
           <strong>
-            <label htmlFor="txtarea">
-              Enter your question<sup>*</sup>
+          <div className="codeType">
+          <strong>
+            <label htmlFor="codeType">Choose Type <sup>*</sup></label>
+          </strong>
+          <select
+            className="w-75"
+            id="codeType"
+            name="codeType"
+            value={codeType}
+            onChange={(e) => handleChange(e)}
+          >
+            <option value="0">Choose Type</option>
+            <option value="py">Python</option>
+            <option value="js">Javascript</option>
+            <option value="css">CSS</option>
+            <option value="html">HTML</option>
+            <option value="aws">AWS</option>
+            <option value="gen">General</option>
+          </select>
+        </div>
+            <label htmlFor="txtarea-2">
+              Enter your question <sup>*</sup>
             </label>
           </strong>
           <textarea
-            placeholder={`Enter your Question here${(<sup>*</sup>)}`}
+            placeholder="Enter your Question here"
             id="txtarea-2"
             className="w-75"
             name="question"
@@ -124,23 +148,7 @@ const PostForm = ({ addPost, setAlert }) => {
             {question}
           </textarea>
         </div>
-        <div className="codeType">
-          <strong>
-            <label htmlFor="langselect">Choose Language</label>
-          </strong>
-          <select
-            id="langselect"
-            name="codeType"
-            value={codeType}
-            onChange={(e) => handleChange(e)}
-          >
-            <option value="0">Choose Language</option>
-            <option value="py">Python</option>
-            <option value="js">Javascript</option>
-            <option value="css">CSS</option>
-            <option value="html">HTML</option>
-          </select>
-        </div>
+        
         <div className="code-edit-container w-75">
           <textarea
             placeholder="Enter your code here"
@@ -184,7 +192,7 @@ const PostForm = ({ addPost, setAlert }) => {
                 <label htmlFor={`option${index}`}>
                   <h4>{`Option ${index + 1}`}</h4>
                 </label>
-                <div className="dfstart">
+                <div className="dfstart" id={`option${index}`}>
                   <textarea
                     value={option.optionsText}
                     className="my-1 w-50"

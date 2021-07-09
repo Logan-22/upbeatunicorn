@@ -14,9 +14,9 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
   }, [mode, setTheme]);
 
   const authLinks = (
-    <ul>
+    <ul className="nav-list">
       <li>
-        <Link className="nav-item" to="/dashboard">
+        <Link className="nav-item" to="/posts">
           <i className="fas fa-chalkboard"></i>
           <span className="hide-sm"> Dashboard</span>
         </Link>
@@ -28,9 +28,15 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
         </Link>
       </li>
       <li>
-        <Link className="nav-item" to="/posts">
+        <Link className="nav-item" to="/add-post">
           <i className="fas fa-laptop-code"></i>
-          <span className="hide-sm"> Posts</span>
+          <span className="hide-sm"> Content</span>
+        </Link>
+      </li>
+      <li>
+        <Link className="nav-item" to="/dashboard">
+          <i className="fas fa-laptop-code"></i>
+          <span className="hide-sm"> Placeholder</span>
         </Link>
       </li>
       <li>
@@ -75,33 +81,13 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
       </li>
     </ul>
   );
-  // function navSlide() {
-  //   const burgerClass = document.querySelector(".burger");
-  //   const navList = document.querySelector(".nav-list");
-  //   navList.classList.toggle("nav-active");
-  //   const navLinks = document.querySelectorAll(".nav-item");
-  //   navLinks.forEach((link, index) => {
-  //     if (link.style.animation) {
-  //       link.style.animation = "";
-  //     } else {
-  //       link.style.animation = `navLinkAnim 0.5s ease forwards ${
-  //         index / 7 + 0.3
-  //       }s`;
-  //     }
-  //     burgerClass.classList.toggle("toggle");
-  //   });
-  // }
-
   return (
-    <div className="mob-nav">
-      <nav className="navbar">
-        <h1 className="brand">
-          <Link to="/" className="nav-item">
-            <i className="fas fa-certificate"></i> CodeCertify
+      <nav className="navbar p-05">
+          <Link to="/" className="brand">
+            <i className="fas fa-certificate hide-sm"></i> <strong> CodeCertify</strong>
           </Link>
-        </h1>
-        <ul className="nav-list">
-          <li className="slider">
+        <div className="space"></div>
+          <span className="slider">
             <strong>
               <i className="fas fa-sun"></i>{" "}
               <span className="hide-sm">Light</span>
@@ -117,26 +103,11 @@ function Nav({ logout, auth: { isAuthenticated, loading }, setTheme }) {
               <i className="fas fa-moon"></i>{" "}
               <span className="hide-sm">Dark</span>
             </strong>
-          </li>
-          {/* <li>
-            <input
-              type="color"
-              className="color-picker"
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-            />
-          </li> */}
+          </span>
           {!loading && (
             <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
           )}
-        </ul>
-        {/* <div className="burger" onClick={navSlide}>
-        <div className="line1"></div>
-        <div className="line2"></div>
-        <div className="line3"></div>
-      </div> */}
       </nav>
-    </div>
   );
 }
 

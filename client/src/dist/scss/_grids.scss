@@ -1,0 +1,22 @@
+.main-grid{
+    display: grid;
+    grid-template-rows: 70px 7fr;
+    min-height:100vh;
+    overflow: hidden;
+}
+
+//* Dashboard Grid
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:8fr 2fr;
+    grid-template-rows:1fr;
+    grid-template-areas: "dash advert";
+}
+.dash{
+    grid-area: dash;
+}
+.advert{
+    grid-area: advert;
+    background-color: chocolate;
+}

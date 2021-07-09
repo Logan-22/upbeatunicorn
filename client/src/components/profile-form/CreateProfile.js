@@ -69,7 +69,7 @@ const CreateProfile = ({ createProfile, history }) => {
             />
             <small className="form-text">What are you called?</small>
           </div>
-          <div className="form-group createprofile">
+          <div className="form-group createprofile w-75">
             <input
               name="company"
               type="text"
@@ -79,7 +79,7 @@ const CreateProfile = ({ createProfile, history }) => {
             />
             <small className="form-text">Name of Your Organization</small>
           </div>
-          <div className="form-group createprofile">
+          <div className="form-group createprofile w-75">
             <select
               name="status"
               value={status}
@@ -99,7 +99,7 @@ const CreateProfile = ({ createProfile, history }) => {
               Let us where you stand on your career
             </small>
           </div>
-          <div className="form-group createprofile">
+          <div className="form-group createprofile w-75">
             <input
               name="skills"
               type="text"
@@ -111,7 +111,7 @@ const CreateProfile = ({ createProfile, history }) => {
               Please use comma seperated values (eg. HTML,CSS, JS)
             </small>
           </div>
-          <div className="form-group createprofile">
+          <div className="form-group createprofile w-75">
             <input
               name="githubusername"
               type="text"
@@ -149,7 +149,7 @@ const CreateProfile = ({ createProfile, history }) => {
             </div>
             {displaySocial && (
               <Fragment>
-                <div className="form-group createprofile social-link">
+                <div className="form-group createprofile social-link w-75">
                   <i className="fab fa-twitter fa-2x text-twitter"></i>
                   <input
                     name="twitter"
@@ -159,7 +159,7 @@ const CreateProfile = ({ createProfile, history }) => {
                     onChange={(e) => handleFormChange(e)}
                   />
                 </div>
-                <div className="form-group createprofile social-link">
+                <div className="form-group createprofile social-link w-75">
                   <i className="fab fa-facebook fa-2x text-facebook"></i>
                   <input
                     name="facebook"
@@ -169,7 +169,7 @@ const CreateProfile = ({ createProfile, history }) => {
                     onChange={(e) => handleFormChange(e)}
                   />
                 </div>
-                <div className="form-group createprofile social-link">
+                <div className="form-group createprofile social-link w-75">
                   <i className="fab fa-youtube fa-2x text-youtube"></i>
                   <input
                     name="youtube"
@@ -179,7 +179,7 @@ const CreateProfile = ({ createProfile, history }) => {
                     onChange={(e) => handleFormChange(e)}
                   />
                 </div>
-                <div className="form-group createprofile social-link">
+                <div className="form-group createprofile social-link w-75">
                   <i className="fab fa-instagram fa-2x text-instagram"></i>
                   <input
                     name="instagram"
@@ -189,7 +189,7 @@ const CreateProfile = ({ createProfile, history }) => {
                     onChange={(e) => handleFormChange(e)}
                   />
                 </div>
-                <div className="form-group createprofile social-link">
+                <div className="form-group createprofile social-link w-75">
                   <i className="fab fa-linkedin fa-2x text-linkedin"></i>
                   <input
                     name="linkedin"
@@ -202,7 +202,7 @@ const CreateProfile = ({ createProfile, history }) => {
               </Fragment>
             )}
           </div>
-          <input type="submit" className="btn btn-primary my-1" />
+          <input type="submit" className="btn btn-primary" />
           <Link to="/dashboard" className="btn btn-dark m-1">
             <i class="fas fa-backward"></i> Go Back
           </Link>

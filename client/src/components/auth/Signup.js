@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Alert from "../layout/Alert";
 import { Redirect, Link } from "react-router-dom";
 
-function Signup({ setAlert, register, isAuthenticated, theme }) {
+function Signup({ setAlert, register, isAuthenticated }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -37,8 +37,8 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
 
   return (
     //* <Provider store={store}>
-    <Fragment>
-      <main className="hundred-perc flexy nav-margin">
+    <>
+      <main className="flexy m-1">
         <section className="container login-container flexy w-75">
           <div className="login-cols1">
             <h1 className="title large text-primary pt-1">Sign Up</h1>
@@ -50,7 +50,7 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
             <form className="form" onSubmit={(e) => onSubmit(e)}>
               <div className="form-group">
                 <label htmlFor="urnme" name="username" className="form-label">
-                  Email ID:
+                  Email ID<sup>*</sup>
                   <input
                     type="email"
                     id="urnme"
@@ -63,7 +63,7 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
                     required
                   />
                   <small className="form-text">
-                    This site uses Gravatar linked with your Email
+                    *This site uses Gravatar linked with your Email
                   </small>
                 </label>
               </div>
@@ -101,7 +101,7 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
                 <input
                   type="submit"
                   name="login"
-                  className="btn btn-primary form-input mt-1"
+                  className="btn btn-primary form-input mt-2"
                   value="Sign Me Up"
                 />
               </div>
@@ -114,21 +114,20 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
             </p>
           </div>
           <div className="login-cols2">
-            <p className="lead">
-              <i className="fa fa-refresh text-primary">
+            <p className="lead size-sm">
+              <i className="fa fa-refresh text-dark">
                 <strong> Alternate Options</strong>
               </i>
             </p>
-            <form className="form">
-              <div className="form-group">
-                <button type="submit" className="btn btn-google">
+              <div className="my-05">
+                <Link type="submit" className="btn btn-google">
                   <div className="p-1 fo-1">
                     <i className="fab fa-google"></i>
                     <strong> Sign Up With Google</strong>
                   </div>
-                </button>
+                </Link>
               </div>
-              <div className="form-group">
+              <div className="my-05">
                 <button type="submit" className="btn btn-facebook">
                   <div className="padx-half-pady-one fo-1">
                     <i className="fab fa-facebook"></i>
@@ -136,7 +135,7 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
                   </div>
                 </button>
               </div>
-              <div className="form-group">
+              <div className="my-05">
                 <button type="submit" className="btn btn-github">
                   <div className="p-1 fo-1">
                     <i className="fab fa-github"></i>
@@ -144,13 +143,12 @@ function Signup({ setAlert, register, isAuthenticated, theme }) {
                   </div>
                 </button>
               </div>
-            </form>
           </div>
         </section>
       </main>
       <div className="circle1"></div>
       <div className="circle2"></div>
-    </Fragment>
+    </>
     // </Provider>
   );
 }

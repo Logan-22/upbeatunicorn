@@ -1,4 +1,4 @@
-@media (max-width: 700px) {
+@media (max-width: 1300px) {
   .hide-sm {
     display: none;
   }
@@ -6,26 +6,85 @@
     width: 90%;
   }
   //*Navbar
-  .mob-nav {
-    min-width: 100vw;
-  }
+
   .navbar {
-    position: relative;
-    display: block;
-    text-align: center;
-    width: 100vw;
-    ul {
-      text-align: center;
-      justify-content: center;
+    grid-template-columns: 2fr 0fr 2fr 7fr;
+    .brand{
+      margin:0;
     }
-    h1 {
-      margin-bottom: 1rem;
+    .slider{
+      margin-left:0.5rem;
+    }
+    & li:last-child{
+      margin-right:0;
+    }
+}
+}
+
+//*Landing
+
+@media (max-width: 1000px) {
+  .x-large {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .pad-mob-1x{
+    padding:0 1rem;
+  }
+  .disp img{
+    margin-bottom: 2rem;
+  }
+  .landing-btn {
+    margin: 0.5rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .x-large {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .lead {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .disp {
+    img {
+      z-index: 2;
+      width: 7rem;
+    }
+    .circle {
+      display:none;
     }
   }
-  .nav-margin {
-    margin: 0px;
+}
+@media (max-width: 700px) {
+  .landing-container{
+    width: 90vw;
   }
-  .landing {
-    margin: 0px;
+}
+@media (max-width: 750px) {
+  .flexy{
+    flex-direction: column;
   }
+  .login-cols2{
+    margin-top:1rem;
+    border-top:1px dotted $light-color;
+    .lead{
+      margin-top:0.5rem;
+    }
+  }
+  .circle1,.circle2{
+    display:none;
+  }
+
+  //* Dashboard grid
+
+  .dashboard-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:1fr 8fr;
+    grid-template-areas: "advert" "dash";
+}
 }

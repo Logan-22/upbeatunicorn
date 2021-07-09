@@ -30,13 +30,14 @@ const AddExperience = ({ addExperience, history }) => {
   };
   return (
     <Fragment>
-      <div className="hundred-perc pages">
-        <h1 className="large nav-margin text-primary pt-1">Add Experience</h1>
+      <div className="ml-3 dashboard-grid">
+        <div className="dash w-75">
+        <h1 className="large text-primary pt-1">Add Experience</h1>
         <p className="lead">
           <i className="fas fa-user-tie"></i> Add your career experience here.
         </p>
         <small>* - Mandatory Fields</small>
-        <Alert />
+        <Alert width="100"/>
         <form className="form" onSubmit={(e) => onSubmit(e)}>
           <div className="form-group createprofile">
             <input
@@ -110,12 +111,14 @@ const AddExperience = ({ addExperience, history }) => {
                 name="description"
               ></textarea>
             </div>
-            <input type="submit" className="btn btn-primary my-1" />
+            <input type="submit" className="btn btn-primary my-1 px-1"/>
             <Link to="/dashboard" className="btn btn-dark m-1">
               <i className="fas fa-backward"></i> Go Back
             </Link>
           </div>
         </form>
+        </div>
+        <advert className="advert"></advert>
       </div>
     </Fragment>
   );

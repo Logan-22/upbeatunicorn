@@ -6,6 +6,10 @@ const PostSchema = new mongoose.Schema({
     ref: "user"
   },
   content: {
+    title:{
+      type:String,
+      required:true
+    },
     question: {
       type: String,
       required: true
@@ -32,9 +36,6 @@ const PostSchema = new mongoose.Schema({
     ],
     explanation: {
       type: String
-    },
-    rating: {
-      type: Number
     }
   },
   name: {

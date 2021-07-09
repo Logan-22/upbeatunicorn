@@ -48,7 +48,7 @@ router.post(
     if (optionsType) postFields.content.optionsType = optionsType;
     if (options) postFields.content.options = options;
     if (explanation) postFields.content.explanation = explanation;
-    postFields.ratings = {};
+    postFields.ratings = [];
     if (rating) postFields.ratings.push({ user: req.user.id, rating });
 
     try {
@@ -67,31 +67,21 @@ router.post(
   }
 );
 
-//* @route  GET api/post
+//* @route  GET api/post OR GET api/post?codeType=XX
 //* @desc   Get all posts
 //* @access Private
 
 router.get("/", auth, async (req, res) => {
   try {
-    const posts = await Post.find().sort({ date: -1 });
+    if(req.query.codeType){
+      const posts = await Post.find({
+        "content.codeType": req.query.codeType
+      }).sort({
+        date: -1
+      });
     return res.json(posts);
-  } catch (err) {
-    console.error(err.message);
-    return res.status(500).send("Server Error");
-  }
-});
-
-//* @route  GET api/post/:codeType
-//* @desc   Get all posts from a particular code type
-//* @access Private
-
-router.get("/codeType/:codeType", auth, async (req, res) => {
-  try {
-    const posts = await Post.find({
-      "content.codeType": req.params.codeType
-    }).sort({
-      date: -1
-    });
+    }
+    const posts = await Post.find().sort({ date: -1 });
     return res.json(posts);
   } catch (err) {
     console.error(err.message);
